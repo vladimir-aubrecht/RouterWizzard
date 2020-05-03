@@ -6,12 +6,13 @@ using Renci.SshNet;
 using RouterWizzard.Commands.Ssh;
 using RouterWizzard.Commands.Ubiquiti;
 using UIKit;
+using Xamarin.Essentials;
 
 namespace RouterWizzard
 {
-    public partial class FirstViewController : UIViewController
+    public partial class DomainViewController : UIViewController
     {
-        public FirstViewController(IntPtr handle) : base(handle)
+        public DomainViewController(IntPtr handle) : base(handle)
         {
         }
 
@@ -19,10 +20,11 @@ namespace RouterWizzard
         {
             base.ViewWillAppear(animated);
             // Perform any additional setup after loading the view, typically from a nib.
+            var hostname = Preferences.Get("hostname", "");
+            var username = Preferences.Get("username", "");
+            var password = Preferences.Get("password", "");
 
-            var connectionInfo = new ConnectionInfo("192.168.2.1",
-                                        "vladimir.aubrecht",
-                                        new PasswordAuthenticationMethod("vladimir.aubrecht", "................"));
+            var connectionInfo = new ConnectionInfo(hostname, username, new PasswordAuthenticationMethod(username, password));
             using (var client = new SshClientWrapper(new SshClient(connectionInfo)))
             {
                 var commandExecutor = new UbiquitiCommandExecutor(new UbiquitiClient(client));

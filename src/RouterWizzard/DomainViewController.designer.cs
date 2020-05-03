@@ -10,8 +10,8 @@ using System.CodeDom.Compiler;
 
 namespace RouterWizzard
 {
-    [Register ("FirstViewController")]
-    partial class FirstViewController
+    [Register ("DomainViewController")]
+    partial class DomainViewController
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
