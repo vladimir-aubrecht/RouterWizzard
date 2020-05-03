@@ -1,14 +1,13 @@
-﻿using System;
+﻿using RouterWizzard.Commands.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Net;
-using RouterWizzard.Commands.Ssh;
-using RouterWizzard.Commands.Ubiquiti.Models;
 
 namespace RouterWizzard.Commands.Ubiquiti
 {
-    internal class UbiquitiCommandExecutor
+    internal class UbiquitiCommandExecutor : ICommandExecutor
     {
         private readonly IUbiquitiClient ubiquitiClient;
 

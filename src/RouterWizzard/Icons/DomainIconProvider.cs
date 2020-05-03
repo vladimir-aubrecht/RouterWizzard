@@ -7,35 +7,27 @@ using System.Threading.Tasks;
 using Foundation;
 using UIKit;
 
-namespace RouterWizzard
+namespace RouterWizzard.Icons
 {
-    public class DomainIconProvider
+    internal class DomainIconProvider
     {
         public UIImage LoadImage(string domain)
         {
-            return UIImage.ActionsImage;
-            try
-            {
-                var url = $"http://{domain}/favicon.ico";
-                return FetchImage(url);
-            }
-            catch (Exception ex)
-            {
-                return UIImage.ActionsImage;
-            }
+            var url = $"http://{domain}/favicon.ico";
+            return FetchImage(url);
         }
 
         private static UIImage FetchImage(string url)
         {
             var request = HttpWebRequest.CreateHttp(url);
-            request.Timeout = 10000;
+            request.Timeout = 5000;
             request.AllowAutoRedirect = true;
 
             var response = (HttpWebResponse)request.GetResponse();
 
             if ((int)response.StatusCode >= 400)
             {
-                return UIImage.ActionsImage;
+                return null;
             }
 
             using (var stream = response.GetResponseStream())

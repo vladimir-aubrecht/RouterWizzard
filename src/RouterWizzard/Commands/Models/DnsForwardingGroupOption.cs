@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace RouterWizzard.Commands.Ubiquiti.Models
+namespace RouterWizzard.Commands.Models
 {
     [DebuggerDisplay("{GroupName}")]
     public class DnsForwardingGroupOption

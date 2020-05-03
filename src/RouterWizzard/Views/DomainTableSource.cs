@@ -4,13 +4,16 @@ using System.Linq;
 using Foundation;
 using UIKit;
 
-namespace RouterWizzard
+namespace RouterWizzard.Views
 {
     internal class DomainTableSource : UITableViewSource
     {
         private IDictionary<string, UIImage> domainsWithImages;
         private IList<string> TableItems;
         private string CellIdentifier = "TableCell";
+
+        public delegate void RemoveDomain(string domain);
+        public event RemoveDomain OnRemovedDomain;
 
         public DomainTableSource(IDictionary<string, UIImage> domainsWithImages)
         {
@@ -45,8 +48,10 @@ namespace RouterWizzard
             switch (editingStyle)
             {
                 case UITableViewCellEditingStyle.Delete:
+                    var removedDomain = this.TableItems[indexPath.Row];
                     this.TableItems.RemoveAt(indexPath.Row);
                     tableView.DeleteRows(new NSIndexPath[] { indexPath }, UITableViewRowAnimation.Fade);
+                    OnRemovedDomain?.Invoke(removedDomain);
                     break;
             }
         }

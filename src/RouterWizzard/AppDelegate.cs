@@ -1,4 +1,6 @@
 ﻿using Foundation;
+using RouterWizzard.Views;
+using System.Linq;
 using UIKit;
 
 namespace RouterWizzard

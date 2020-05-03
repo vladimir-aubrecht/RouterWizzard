@@ -1,51 +1,99 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1723">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
     </dependencies>
     <scenes>
         <!--First-->
-        <scene sceneID="hNz-n2-bh7">
+        <!--Second-->
+        <!--Tab Bar Controller-->
+        <scene sceneID="1713">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="DomainViewController" customModuleProvider="" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Ia1-K6-d13"/>
-                        <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
-                    </layoutGuides>
-                    <tabBarItem key="tabBarItem" title="Domains" image="First" id="acW-dT-cKf"/>
+                <tableViewController id="1714" sceneMemberID="viewController" customClass="DomainViewController">
+                    <navigationItem key="navigationItem" title="Redirected domains" id="1715">
+                        <barButtonItem key="rightBarButtonItem" id="2406" systemItem="add">
+                            <connections>
+                                <segue id="13127" destination="9774" kind="show"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" id="14826" systemItem="refresh">
+                            <connections>
+                                <action selector="RefreshButton_Activated:" destination="1714" id="14865"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="-1" id="1250" translatesAutoresizingMaskIntoConstraints="NO" key="view">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     </tableView>
                     <connections>
                         <outlet property="DomainTableView" destination="1250" id="name-outlet-1250"/>
+                        <outlet property="RefreshButton" destination="14826" id="name-outlet-14826"/>
                     </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1721" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="-320"/>
+            <point key="canvasLocation" x="277" y="-252"/>
         </scene>
-        <!--Second-->
-        <!--Tab Bar Controller-->
-        <scene sceneID="yl2-sM-qoP">
+        <scene sceneID="1722">
             <objects>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
+                <navigationController id="1723" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1725">
+                        <rect key="frame" x="0.0" y="20" width="414" height="50"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="1714" kind="relationship" relationship="rootViewController" id="1724"/>
+                    </connections>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="6784">
                         <rect key="frame" x="0.0" y="686" width="414" height="50"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
+                    </toolbar>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1726" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.0" y="0.0"/>
+            <point key="canvasLocation" x="-378" y="-422"/>
+        </scene>
+        <scene sceneID="9773">
+            <objects>
+                <viewController id="9774" sceneMemberID="viewController" customClass="AddDomainViewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9771"/>
+                        <viewControllerLayoutGuide type="bottom" id="9772"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9775" semanticContentAttribute="playback">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="9786" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                <rect key="frame" x="32" y="100" width="350" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add domain" id="10014">
+                        <barButtonItem key="rightBarButtonItem" id="10018" systemItem="save">
+                            <connections>
+                                <action selector="SaveButton_Activated:" destination="9774" id="12312"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" id="10015" systemItem="cancel">
+                            <connections>
+                                <action selector="CancelButton_Activated:" destination="9774" id="12333"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="CancelButton" destination="10015" id="name-outlet-10015"/>
+                        <outlet property="SaveButton" destination="10018" id="name-outlet-10018"/>
+                        <outlet property="DomainTextField" destination="9786" id="name-outlet-9786"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9776" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="989" y="-476"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="First" width="30" height="30"/>
-    </resources>
 </document>

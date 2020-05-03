@@ -8,7 +8,7 @@ using Foundation;
 using System;
 using System.CodeDom.Compiler;
 
-namespace RouterWizzard
+namespace RouterWizzard.Views
 {
     [Register ("DomainViewController")]
     partial class DomainViewController
@@ -17,11 +17,24 @@ namespace RouterWizzard
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITableView DomainTableView { get; set; }
 
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIBarButtonItem RefreshButton { get; set; }
+
+        [Action ("RefreshButton_Activated:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void RefreshButton_Activated (UIKit.UIBarButtonItem sender);
+
         void ReleaseDesignerOutlets ()
         {
             if (DomainTableView != null) {
                 DomainTableView.Dispose ();
                 DomainTableView = null;
+            }
+
+            if (RefreshButton != null) {
+                RefreshButton.Dispose ();
+                RefreshButton = null;
             }
         }
     }
