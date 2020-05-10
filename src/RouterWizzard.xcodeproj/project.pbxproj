@@ -11,8 +11,8 @@
 		F49FCA262461F40700ECE591 /* SwiftUIRefresh in Frameworks */ = {isa = PBXBuildFile; productRef = F49FCA252461F40700ECE591 /* SwiftUIRefresh */; };
 		F49FCA282461F52400ECE591 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F49FCA272461F52400ECE591 /* Settings.bundle */; };
 		F4A6A10F246815C20057CCFA /* FirstStartupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A6A10E246815C20057CCFA /* FirstStartupView.swift */; };
-		F4A7321824641E4C0074922F /* NMSSH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A7321624641E370074922F /* NMSSH.framework */; };
-		F4A7321924641E4C0074922F /* NMSSH.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F4A7321624641E370074922F /* NMSSH.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F4A6A12A246827730057CCFA /* NMSSH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A6A1262468274A0057CCFA /* NMSSH.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		F4A6A12F246829870057CCFA /* libz.1.2.11.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A6A12E246829870057CCFA /* libz.1.2.11.tbd */; settings = {ATTRIBUTES = (Required, ); }; };
 		F4A7321E246422B80074922F /* SshClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A7321D246422B80074922F /* SshClient.swift */; };
 		F4A732212464263E0074922F /* SshError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A732202464263E0074922F /* SshError.swift */; };
 		F4A73225246428FC0074922F /* UbiquitiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A73224246428FB0074922F /* UbiquitiClient.swift */; };
@@ -28,25 +28,12 @@
 		F4FE115D2466FE2E004791F8 /* DomainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FE115C2466FE2E004791F8 /* DomainModel.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		F4A7321A24641E4C0074922F /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				F4A7321924641E4C0074922F /* NMSSH.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		F49FCA022460AA0300ECE591 /* DomainAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainAddView.swift; sourceTree = "<group>"; };
 		F49FCA272461F52400ECE591 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		F4A6A10E246815C20057CCFA /* FirstStartupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstStartupView.swift; sourceTree = "<group>"; };
-		F4A7321624641E370074922F /* NMSSH.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NMSSH.framework; sourceTree = "<group>"; };
+		F4A6A1262468274A0057CCFA /* NMSSH.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NMSSH.framework; sourceTree = "<group>"; };
+		F4A6A12E246829870057CCFA /* libz.1.2.11.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.11.tbd; path = usr/lib/libz.1.2.11.tbd; sourceTree = SDKROOT; };
 		F4A7321B24641F8A0074922F /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		F4A7321D246422B80074922F /* SshClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SshClient.swift; sourceTree = "<group>"; };
 		F4A732202464263E0074922F /* SshError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SshError.swift; sourceTree = "<group>"; };
@@ -69,8 +56,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4A6A12F246829870057CCFA /* libz.1.2.11.tbd in Frameworks */,
+				F4A6A12A246827730057CCFA /* NMSSH.framework in Frameworks */,
 				F4FE115A2466FBD7004791F8 /* FavIcon in Frameworks */,
-				F4A7321824641E4C0074922F /* NMSSH.framework in Frameworks */,
 				F49FCA262461F40700ECE591 /* SwiftUIRefresh in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -81,7 +69,8 @@
 		F4A7321524641E120074922F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F4A7321624641E370074922F /* NMSSH.framework */,
+				F4A6A12E246829870057CCFA /* libz.1.2.11.tbd */,
+				F4A6A1262468274A0057CCFA /* NMSSH.framework */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";
@@ -185,7 +174,6 @@
 				F4D1FBC124608C03006EA073 /* Sources */,
 				F4D1FBC224608C03006EA073 /* Frameworks */,
 				F4D1FBC324608C03006EA073 /* Resources */,
-				F4A7321A24641E4C0074922F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 public struct DomainModel {
     public let domain: String

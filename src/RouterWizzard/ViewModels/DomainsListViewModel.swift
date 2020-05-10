@@ -8,6 +8,7 @@
 
 import Foundation
 import FavIcon
+import UIKit
 
 extension DomainListView {
     class DomainsListViewModel : ObservableObject {
