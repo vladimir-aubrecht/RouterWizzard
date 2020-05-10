@@ -63,21 +63,34 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private func InitView(_ scene: UIScene, hostname: String, username: String, password: String)
     {
         self.sshClient = SshClient(hostname: hostname, username: username)
-        try! self.sshClient!.connect()
-        try! self.sshClient!.authenticate(password: password)
         
-        let ubiquitiClient = UbiquitiClient(sshClient: sshClient!)
-        let ubiquitiDomainFlowClient = UbiquitiDomainFlowClient(ubiquitiClient: ubiquitiClient)
-        
-        let domainListViewModel = DomainListView.DomainsListViewModel(domainFlowClient: ubiquitiDomainFlowClient)
-        let domainView = DomainListView(domainListViewModel: domainListViewModel)
-        
-        // Use a UIHostingController as window root view controller.
-        if let windowScene = scene as? UIWindowScene {
-            let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: domainView)
-            self.window = window
-            window.makeKeyAndVisible()
+        do {
+            try self.sshClient!.connect()
+            try self.sshClient!.authenticate(password: password)
+            
+            let ubiquitiClient = UbiquitiClient(sshClient: sshClient!)
+            let ubiquitiDomainFlowClient = UbiquitiDomainFlowClient(ubiquitiClient: ubiquitiClient)
+            
+            let domainListViewModel = DomainListView.DomainsListViewModel(domainFlowClient: ubiquitiDomainFlowClient)
+            let domainListView = DomainListView(domainListViewModel: domainListViewModel)
+            
+            if let windowScene = scene as? UIWindowScene {
+                let window = UIWindow(windowScene: windowScene)
+                window.rootViewController = UIHostingController(rootView: domainListView)
+                self.window = window
+                window.makeKeyAndVisible()
+            }
+            
+        } catch {
+            if let windowScene = scene as? UIWindowScene {
+                let window = UIWindow(windowScene: windowScene)
+                window.rootViewController = UIHostingController(rootView: FirstStartupView())
+                self.window = window
+                window.makeKeyAndVisible()
+            }
         }
+        
+        
+
     }
 }

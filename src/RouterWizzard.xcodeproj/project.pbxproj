@@ -10,6 +10,7 @@
 		F49FCA032460AA0300ECE591 /* DomainAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49FCA022460AA0300ECE591 /* DomainAddView.swift */; };
 		F49FCA262461F40700ECE591 /* SwiftUIRefresh in Frameworks */ = {isa = PBXBuildFile; productRef = F49FCA252461F40700ECE591 /* SwiftUIRefresh */; };
 		F49FCA282461F52400ECE591 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F49FCA272461F52400ECE591 /* Settings.bundle */; };
+		F4A6A10F246815C20057CCFA /* FirstStartupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A6A10E246815C20057CCFA /* FirstStartupView.swift */; };
 		F4A7321824641E4C0074922F /* NMSSH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A7321624641E370074922F /* NMSSH.framework */; };
 		F4A7321924641E4C0074922F /* NMSSH.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F4A7321624641E370074922F /* NMSSH.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F4A7321E246422B80074922F /* SshClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A7321D246422B80074922F /* SshClient.swift */; };
@@ -44,6 +45,7 @@
 /* Begin PBXFileReference section */
 		F49FCA022460AA0300ECE591 /* DomainAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainAddView.swift; sourceTree = "<group>"; };
 		F49FCA272461F52400ECE591 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		F4A6A10E246815C20057CCFA /* FirstStartupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstStartupView.swift; sourceTree = "<group>"; };
 		F4A7321624641E370074922F /* NMSSH.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NMSSH.framework; sourceTree = "<group>"; };
 		F4A7321B24641F8A0074922F /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		F4A7321D246422B80074922F /* SshClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SshClient.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 				F4D1FBCC24608C03006EA073 /* DomainListView.swift */,
 				F4D1FBDD2460933C006EA073 /* DomainView.swift */,
 				F49FCA022460AA0300ECE591 /* DomainAddView.swift */,
+				F4A6A10E246815C20057CCFA /* FirstStartupView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 				F4A7322D2464B38D0074922F /* DomainsListViewModel.swift in Sources */,
 				F4D1FBDE2460933C006EA073 /* DomainView.swift in Sources */,
 				F4FE115D2466FE2E004791F8 /* DomainModel.swift in Sources */,
+				F4A6A10F246815C20057CCFA /* FirstStartupView.swift in Sources */,
 				F4D1FBCD24608C03006EA073 /* DomainListView.swift in Sources */,
 				F4A732212464263E0074922F /* SshError.swift in Sources */,
 			);
