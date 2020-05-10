@@ -12,30 +12,13 @@ import SwiftUI
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    var ubiquitiDomainFlowClient: UbiquitiDomainFlowClient?
+    var sshClient: SshClient?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-
-        let sshClient = SshClient(hostname: "192.168.2.1", username: "vladimir.aubrecht")
-        try! sshClient.connect()
-        try! sshClient.authenticate(password: "LDErBQoPbuXmnfr@KE!y!9XH*")
-        
-        let ubiquitiClient = UbiquitiClient(sshClient: sshClient)
-        let ubiquitiDomainFlowClient = UbiquitiDomainFlowClient(ubiquitiClient: ubiquitiClient)
-        // Create the SwiftUI view that provides the window contents.
-        
-        let domainListViewModel = DomainListView.DomainsListViewModel(domainFlowClient: ubiquitiDomainFlowClient)
-        let domainView = DomainListView(domainListViewModel: domainListViewModel)
-        
-        // Use a UIHostingController as window root view controller.
-        if let windowScene = scene as? UIWindowScene {
-            let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: domainView)
-            self.window = window
-            window.makeKeyAndVisible()
-        }
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -58,13 +41,43 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneWillEnterForeground(_ scene: UIScene) {
         // Called as the scene transitions from the background to the foreground.
         // Use this method to undo the changes made on entering the background.
+        
+        let userDefaults = UserDefaults.standard
+        let hostname = userDefaults.string(forKey: "hostname_preference")
+        let username = userDefaults.string(forKey: "username_preference")
+        let password = userDefaults.string(forKey: "password_preference")
+        
+        if (hostname != nil && username != nil && password != nil) {
+            self.InitView(scene, hostname: hostname!, username: username!, password: password!)
+        }
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
         // Called as the scene transitions from the foreground to the background.
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
+        
+        self.sshClient?.disconnect()
     }
 
-
+    private func InitView(_ scene: UIScene, hostname: String, username: String, password: String)
+    {
+        self.sshClient = SshClient(hostname: hostname, username: username)
+        try! self.sshClient!.connect()
+        try! self.sshClient!.authenticate(password: password)
+        
+        let ubiquitiClient = UbiquitiClient(sshClient: sshClient!)
+        let ubiquitiDomainFlowClient = UbiquitiDomainFlowClient(ubiquitiClient: ubiquitiClient)
+        
+        let domainListViewModel = DomainListView.DomainsListViewModel(domainFlowClient: ubiquitiDomainFlowClient)
+        let domainView = DomainListView(domainListViewModel: domainListViewModel)
+        
+        // Use a UIHostingController as window root view controller.
+        if let windowScene = scene as? UIWindowScene {
+            let window = UIWindow(windowScene: windowScene)
+            window.rootViewController = UIHostingController(rootView: domainView)
+            self.window = window
+            window.makeKeyAndVisible()
+        }
+    }
 }
