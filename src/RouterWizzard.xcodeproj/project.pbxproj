@@ -1,0 +1,515 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F49FCA032460AA0300ECE591 /* DomainAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49FCA022460AA0300ECE591 /* DomainAddView.swift */; };
+		F49FCA262461F40700ECE591 /* SwiftUIRefresh in Frameworks */ = {isa = PBXBuildFile; productRef = F49FCA252461F40700ECE591 /* SwiftUIRefresh */; };
+		F49FCA282461F52400ECE591 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F49FCA272461F52400ECE591 /* Settings.bundle */; };
+		F4A7321824641E4C0074922F /* NMSSH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A7321624641E370074922F /* NMSSH.framework */; };
+		F4A7321924641E4C0074922F /* NMSSH.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F4A7321624641E370074922F /* NMSSH.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F4A7321E246422B80074922F /* SshClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A7321D246422B80074922F /* SshClient.swift */; };
+		F4A732212464263E0074922F /* SshError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A732202464263E0074922F /* SshError.swift */; };
+		F4A73225246428FC0074922F /* UbiquitiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A73224246428FB0074922F /* UbiquitiClient.swift */; };
+		F4A7322A24646B910074922F /* UbiquitiDomainFlowClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A7322924646B910074922F /* UbiquitiDomainFlowClient.swift */; };
+		F4A7322D2464B38D0074922F /* DomainsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A7322C2464B38D0074922F /* DomainsListViewModel.swift */; };
+		F4D1FBC924608C03006EA073 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D1FBC824608C03006EA073 /* AppDelegate.swift */; };
+		F4D1FBCB24608C03006EA073 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D1FBCA24608C03006EA073 /* SceneDelegate.swift */; };
+		F4D1FBCD24608C03006EA073 /* DomainListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D1FBCC24608C03006EA073 /* DomainListView.swift */; };
+		F4D1FBCF24608C05006EA073 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4D1FBCE24608C05006EA073 /* Assets.xcassets */; };
+		F4D1FBD524608C05006EA073 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4D1FBD324608C05006EA073 /* LaunchScreen.storyboard */; };
+		F4D1FBDE2460933C006EA073 /* DomainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D1FBDD2460933C006EA073 /* DomainView.swift */; };
+		F4FE115A2466FBD7004791F8 /* FavIcon in Frameworks */ = {isa = PBXBuildFile; productRef = F4FE11592466FBD7004791F8 /* FavIcon */; };
+		F4FE115D2466FE2E004791F8 /* DomainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FE115C2466FE2E004791F8 /* DomainModel.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F4A7321A24641E4C0074922F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F4A7321924641E4C0074922F /* NMSSH.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		F49FCA022460AA0300ECE591 /* DomainAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainAddView.swift; sourceTree = "<group>"; };
+		F49FCA272461F52400ECE591 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		F4A7321624641E370074922F /* NMSSH.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NMSSH.framework; sourceTree = "<group>"; };
+		F4A7321B24641F8A0074922F /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		F4A7321D246422B80074922F /* SshClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SshClient.swift; sourceTree = "<group>"; };
+		F4A732202464263E0074922F /* SshError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SshError.swift; sourceTree = "<group>"; };
+		F4A73224246428FB0074922F /* UbiquitiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UbiquitiClient.swift; sourceTree = "<group>"; };
+		F4A7322924646B910074922F /* UbiquitiDomainFlowClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UbiquitiDomainFlowClient.swift; sourceTree = "<group>"; };
+		F4A7322C2464B38D0074922F /* DomainsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainsListViewModel.swift; sourceTree = "<group>"; };
+		F4D1FBC524608C03006EA073 /* RouterWizzard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RouterWizzard.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4D1FBC824608C03006EA073 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F4D1FBCA24608C03006EA073 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		F4D1FBCC24608C03006EA073 /* DomainListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainListView.swift; sourceTree = "<group>"; };
+		F4D1FBCE24608C05006EA073 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F4D1FBD424608C05006EA073 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F4D1FBD624608C05006EA073 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F4D1FBDD2460933C006EA073 /* DomainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainView.swift; sourceTree = "<group>"; };
+		F4FE115C2466FE2E004791F8 /* DomainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainModel.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F4D1FBC224608C03006EA073 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4FE115A2466FBD7004791F8 /* FavIcon in Frameworks */,
+				F4A7321824641E4C0074922F /* NMSSH.framework in Frameworks */,
+				F49FCA262461F40700ECE591 /* SwiftUIRefresh in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F4A7321524641E120074922F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F4A7321624641E370074922F /* NMSSH.framework */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		F4A7321C246422A50074922F /* Ssh */ = {
+			isa = PBXGroup;
+			children = (
+				F4A732202464263E0074922F /* SshError.swift */,
+				F4A7321D246422B80074922F /* SshClient.swift */,
+			);
+			path = Ssh;
+			sourceTree = "<group>";
+		};
+		F4A73222246428B80074922F /* Clients */ = {
+			isa = PBXGroup;
+			children = (
+				F4A73223246428E30074922F /* Ubiquiti */,
+				F4A7321C246422A50074922F /* Ssh */,
+			);
+			path = Clients;
+			sourceTree = "<group>";
+		};
+		F4A73223246428E30074922F /* Ubiquiti */ = {
+			isa = PBXGroup;
+			children = (
+				F4A73224246428FB0074922F /* UbiquitiClient.swift */,
+				F4A7322924646B910074922F /* UbiquitiDomainFlowClient.swift */,
+			);
+			path = Ubiquiti;
+			sourceTree = "<group>";
+		};
+		F4A7322B2464B3770074922F /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				F4A7322C2464B38D0074922F /* DomainsListViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		F4D1FBBC24608C03006EA073 = {
+			isa = PBXGroup;
+			children = (
+				F4A7321524641E120074922F /* Frameworks */,
+				F49FCA272461F52400ECE591 /* Settings.bundle */,
+				F4D1FBC724608C03006EA073 /* RouterWizzard */,
+				F4D1FBC624608C03006EA073 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F4D1FBC624608C03006EA073 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F4D1FBC524608C03006EA073 /* RouterWizzard.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F4D1FBC724608C03006EA073 /* RouterWizzard */ = {
+			isa = PBXGroup;
+			children = (
+				F4FE115B2466FE11004791F8 /* Models */,
+				F4A7322B2464B3770074922F /* ViewModels */,
+				F4A73222246428B80074922F /* Clients */,
+				F4D1FBDC246091BC006EA073 /* Views */,
+				F4D1FBC824608C03006EA073 /* AppDelegate.swift */,
+				F4D1FBCA24608C03006EA073 /* SceneDelegate.swift */,
+				F4D1FBCE24608C05006EA073 /* Assets.xcassets */,
+				F4D1FBD324608C05006EA073 /* LaunchScreen.storyboard */,
+				F4D1FBD624608C05006EA073 /* Info.plist */,
+				F4A7321B24641F8A0074922F /* Bridging-Header.h */,
+			);
+			path = RouterWizzard;
+			sourceTree = "<group>";
+		};
+		F4D1FBDC246091BC006EA073 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F4D1FBCC24608C03006EA073 /* DomainListView.swift */,
+				F4D1FBDD2460933C006EA073 /* DomainView.swift */,
+				F49FCA022460AA0300ECE591 /* DomainAddView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F4FE115B2466FE11004791F8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F4FE115C2466FE2E004791F8 /* DomainModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F4D1FBC424608C03006EA073 /* RouterWizzard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F4D1FBD924608C05006EA073 /* Build configuration list for PBXNativeTarget "RouterWizzard" */;
+			buildPhases = (
+				F4D1FBC124608C03006EA073 /* Sources */,
+				F4D1FBC224608C03006EA073 /* Frameworks */,
+				F4D1FBC324608C03006EA073 /* Resources */,
+				F4A7321A24641E4C0074922F /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RouterWizzard;
+			packageProductDependencies = (
+				F49FCA252461F40700ECE591 /* SwiftUIRefresh */,
+				F4FE11592466FBD7004791F8 /* FavIcon */,
+			);
+			productName = RouterWizzard;
+			productReference = F4D1FBC524608C03006EA073 /* RouterWizzard.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F4D1FBBD24608C03006EA073 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1140;
+				LastUpgradeCheck = 1140;
+				ORGANIZATIONNAME = "Vladimir Aubrecht";
+				TargetAttributes = {
+					F4D1FBC424608C03006EA073 = {
+						CreatedOnToolsVersion = 11.4;
+					};
+				};
+			};
+			buildConfigurationList = F4D1FBC024608C03006EA073 /* Build configuration list for PBXProject "RouterWizzard" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F4D1FBBC24608C03006EA073;
+			packageReferences = (
+				F49FCA242461F40700ECE591 /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */,
+				F4FE11582466FBD7004791F8 /* XCRemoteSwiftPackageReference "FavIcon" */,
+			);
+			productRefGroup = F4D1FBC624608C03006EA073 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F4D1FBC424608C03006EA073 /* RouterWizzard */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F4D1FBC324608C03006EA073 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4D1FBD524608C05006EA073 /* LaunchScreen.storyboard in Resources */,
+				F49FCA282461F52400ECE591 /* Settings.bundle in Resources */,
+				F4D1FBCF24608C05006EA073 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F4D1FBC124608C03006EA073 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F49FCA032460AA0300ECE591 /* DomainAddView.swift in Sources */,
+				F4A7322A24646B910074922F /* UbiquitiDomainFlowClient.swift in Sources */,
+				F4D1FBC924608C03006EA073 /* AppDelegate.swift in Sources */,
+				F4A73225246428FC0074922F /* UbiquitiClient.swift in Sources */,
+				F4A7321E246422B80074922F /* SshClient.swift in Sources */,
+				F4D1FBCB24608C03006EA073 /* SceneDelegate.swift in Sources */,
+				F4A7322D2464B38D0074922F /* DomainsListViewModel.swift in Sources */,
+				F4D1FBDE2460933C006EA073 /* DomainView.swift in Sources */,
+				F4FE115D2466FE2E004791F8 /* DomainModel.swift in Sources */,
+				F4D1FBCD24608C03006EA073 /* DomainListView.swift in Sources */,
+				F4A732212464263E0074922F /* SshError.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F4D1FBD324608C05006EA073 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F4D1FBD424608C05006EA073 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F4D1FBD724608C05006EA073 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "RouterWizzard/Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = "";
+			};
+			name = Debug;
+		};
+		F4D1FBD824608C05006EA073 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OBJC_BRIDGING_HEADER = "RouterWizzard/Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = "";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F4D1FBDA24608C05006EA073 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = SN9DM2UY8Q;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_TESTING_SEARCH_PATHS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = RouterWizzard/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ASoft.RouterWizzard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "";
+			};
+			name = Debug;
+		};
+		F4D1FBDB24608C05006EA073 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = SN9DM2UY8Q;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_TESTING_SEARCH_PATHS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = RouterWizzard/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ASoft.RouterWizzard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F4D1FBC024608C03006EA073 /* Build configuration list for PBXProject "RouterWizzard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4D1FBD724608C05006EA073 /* Debug */,
+				F4D1FBD824608C05006EA073 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F4D1FBD924608C05006EA073 /* Build configuration list for PBXNativeTarget "RouterWizzard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4D1FBDA24608C05006EA073 /* Debug */,
+				F4D1FBDB24608C05006EA073 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F49FCA242461F40700ECE591 /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/timbersoftware/SwiftUIRefresh.git";
+			requirement = {
+				kind = exactVersion;
+				version = 0.0.3;
+			};
+		};
+		F4FE11582466FBD7004791F8 /* XCRemoteSwiftPackageReference "FavIcon" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/vladimir-aubrecht/FavIcon.git";
+			requirement = {
+				branch = "swift-5";
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F49FCA252461F40700ECE591 /* SwiftUIRefresh */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F49FCA242461F40700ECE591 /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */;
+			productName = SwiftUIRefresh;
+		};
+		F4FE11592466FBD7004791F8 /* FavIcon */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4FE11582466FBD7004791F8 /* XCRemoteSwiftPackageReference "FavIcon" */;
+			productName = FavIcon;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = F4D1FBBD24608C03006EA073 /* Project object */;
+}
