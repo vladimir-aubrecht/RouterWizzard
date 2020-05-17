@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F4376A832471727A00E7721F /* FavIcon in Frameworks */ = {isa = PBXBuildFile; productRef = F4376A822471727A00E7721F /* FavIcon */; };
 		F49FCA032460AA0300ECE591 /* DomainAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49FCA022460AA0300ECE591 /* DomainAddView.swift */; };
 		F49FCA262461F40700ECE591 /* SwiftUIRefresh in Frameworks */ = {isa = PBXBuildFile; productRef = F49FCA252461F40700ECE591 /* SwiftUIRefresh */; };
 		F49FCA282461F52400ECE591 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F49FCA272461F52400ECE591 /* Settings.bundle */; };
@@ -24,7 +25,6 @@
 		F4D1FBCF24608C05006EA073 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4D1FBCE24608C05006EA073 /* Assets.xcassets */; };
 		F4D1FBD524608C05006EA073 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4D1FBD324608C05006EA073 /* LaunchScreen.storyboard */; };
 		F4D1FBDE2460933C006EA073 /* DomainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D1FBDD2460933C006EA073 /* DomainView.swift */; };
-		F4FE115A2466FBD7004791F8 /* FavIcon in Frameworks */ = {isa = PBXBuildFile; productRef = F4FE11592466FBD7004791F8 /* FavIcon */; };
 		F4FE115D2466FE2E004791F8 /* DomainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FE115C2466FE2E004791F8 /* DomainModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -57,8 +57,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4A6A12F246829870057CCFA /* libz.1.2.11.tbd in Frameworks */,
+				F4376A832471727A00E7721F /* FavIcon in Frameworks */,
 				F4A6A12A246827730057CCFA /* NMSSH.framework in Frameworks */,
-				F4FE115A2466FBD7004791F8 /* FavIcon in Frameworks */,
 				F49FCA262461F40700ECE591 /* SwiftUIRefresh in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -182,7 +182,7 @@
 			name = RouterWizzard;
 			packageProductDependencies = (
 				F49FCA252461F40700ECE591 /* SwiftUIRefresh */,
-				F4FE11592466FBD7004791F8 /* FavIcon */,
+				F4376A822471727A00E7721F /* FavIcon */,
 			);
 			productName = RouterWizzard;
 			productReference = F4D1FBC524608C03006EA073 /* RouterWizzard.app */;
@@ -214,7 +214,7 @@
 			mainGroup = F4D1FBBC24608C03006EA073;
 			packageReferences = (
 				F49FCA242461F40700ECE591 /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */,
-				F4FE11582466FBD7004791F8 /* XCRemoteSwiftPackageReference "FavIcon" */,
+				F4376A812471727A00E7721F /* XCRemoteSwiftPackageReference "FavIcon" */,
 			);
 			productRefGroup = F4D1FBC624608C03006EA073 /* Products */;
 			projectDirPath = "";
@@ -472,6 +472,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		F4376A812471727A00E7721F /* XCRemoteSwiftPackageReference "FavIcon" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/leonbreedt/FavIcon";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.0;
+			};
+		};
 		F49FCA242461F40700ECE591 /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/timbersoftware/SwiftUIRefresh.git";
@@ -480,26 +488,18 @@
 				version = 0.0.3;
 			};
 		};
-		F4FE11582466FBD7004791F8 /* XCRemoteSwiftPackageReference "FavIcon" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/vladimir-aubrecht/FavIcon.git";
-			requirement = {
-				branch = "swift-5";
-				kind = branch;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		F4376A822471727A00E7721F /* FavIcon */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4376A812471727A00E7721F /* XCRemoteSwiftPackageReference "FavIcon" */;
+			productName = FavIcon;
+		};
 		F49FCA252461F40700ECE591 /* SwiftUIRefresh */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F49FCA242461F40700ECE591 /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */;
 			productName = SwiftUIRefresh;
-		};
-		F4FE11592466FBD7004791F8 /* FavIcon */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F4FE11582466FBD7004791F8 /* XCRemoteSwiftPackageReference "FavIcon" */;
-			productName = FavIcon;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

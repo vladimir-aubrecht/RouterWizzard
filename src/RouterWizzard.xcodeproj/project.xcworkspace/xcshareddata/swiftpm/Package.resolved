@@ -3,11 +3,11 @@
     "pins": [
       {
         "package": "FavIcon",
-        "repositoryURL": "https://github.com/vladimir-aubrecht/FavIcon.git",
+        "repositoryURL": "https://github.com/leonbreedt/FavIcon",
         "state": {
-          "branch": "swift-5",
-          "revision": "48613808ec41cc436a9ec6d25df6b86b3e131b6e",
-          "version": null
+          "branch": null,
+          "revision": "5bf16aad3ea543891eaef7e8da2aa2f6bb29e6e4",
+          "version": "3.1.0"
         }
       },
       {
