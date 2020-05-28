@@ -143,7 +143,7 @@ public class UbiquitiDomainFlowClient {
         }
         
         try self.ubiquitiClient.endSession()
-        //try self.ubiquitiClient.commit()
-        //try self.ubiquitiClient.save()
+        try self.ubiquitiClient.commit()
+        try self.ubiquitiClient.save()
     }
 }
