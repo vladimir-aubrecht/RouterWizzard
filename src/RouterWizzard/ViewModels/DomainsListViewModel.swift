@@ -41,11 +41,11 @@ extension DomainListView {
         }
         
         func addDomain(domain: String) {
-            try? self.domainFlowClient.addDomain(domain: domain)
+            try! self.domainFlowClient.addDomain(domain: domain)
         }
         
         func removeDomain(domain: String) {
-            try? self.domainFlowClient.deleteDomain(domain: domain)
+            try! self.domainFlowClient.deleteDomain(domain: domain)
         }
     }
 }

@@ -142,8 +142,8 @@ public class UbiquitiDomainFlowClient {
             try self.ubiquitiClient.set(key: "service dns forwarding \(option)")
         }
         
-        try self.ubiquitiClient.endSession()
         try self.ubiquitiClient.commit()
         try self.ubiquitiClient.save()
+        try self.ubiquitiClient.endSession()
     }
 }

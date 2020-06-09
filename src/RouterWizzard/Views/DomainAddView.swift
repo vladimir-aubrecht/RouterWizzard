@@ -19,6 +19,7 @@ struct DomainAddView: View {
             TextField("Enter domain", text: $domain)
             .textFieldStyle(RoundedBorderTextFieldStyle())
             .autocapitalization(.none)
+            .keyboardType(.URL)
             Spacer()  
         }.padding()
         .navigationBarTitle(Text("Add domain"), displayMode: .inline)
