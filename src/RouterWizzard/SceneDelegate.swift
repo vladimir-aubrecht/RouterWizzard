@@ -43,12 +43,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to undo the changes made on entering the background.
         
         let userDefaults = UserDefaults.standard
-        let hostname = userDefaults.string(forKey: "hostname_preference")
-        let username = userDefaults.string(forKey: "username_preference")
-        let password = userDefaults.string(forKey: "password_preference")
+        let hostname = userDefaults.string(forKey: "hostname_preference") ?? ""
+        let username = userDefaults.string(forKey: "username_preference") ?? ""
+        let password = userDefaults.string(forKey: "password_preference") ?? ""
         
-        if (hostname != nil && username != nil && password != nil) {
-            self.InitView(scene, hostname: hostname!, username: username!, password: password!)
+        if (hostname != "" && username != "" && password != "") {
+            self.initView(scene, hostname: hostname, username: username, password: password)
+        }
+        else {
+            self.setWindowController(scene, hostingController: UIHostingController(rootView: FirstStartupView()))
         }
     }
 
@@ -60,7 +63,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.sshClient?.disconnect()
     }
 
-    private func InitView(_ scene: UIScene, hostname: String, username: String, password: String)
+    private func initView(_ scene: UIScene, hostname: String, username: String, password: String)
     {
         self.sshClient = SshClient(hostname: hostname, username: username)
         
@@ -73,24 +76,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             
             let domainListViewModel = DomainListView.DomainsListViewModel(domainFlowClient: ubiquitiDomainFlowClient)
             let domainListView = DomainListView(domainListViewModel: domainListViewModel)
-            
-            if let windowScene = scene as? UIWindowScene {
-                let window = UIWindow(windowScene: windowScene)
-                window.rootViewController = UIHostingController(rootView: domainListView)
-                self.window = window
-                window.makeKeyAndVisible()
-            }
+
+            self.setWindowController(scene, hostingController: UIHostingController(rootView: domainListView))
             
         } catch {
-            if let windowScene = scene as? UIWindowScene {
-                let window = UIWindow(windowScene: windowScene)
-                window.rootViewController = UIHostingController(rootView: FirstStartupView())
-                self.window = window
-                window.makeKeyAndVisible()
-            }
+            self.setWindowController(scene, hostingController: UIHostingController(rootView: FirstStartupView()))
         }
+    }
         
-        
-
+    private func setWindowController(_ scene: UIScene, hostingController: UIViewController) {
+        if let windowScene = scene as? UIWindowScene {
+            let window = UIWindow(windowScene: windowScene)
+            window.rootViewController = hostingController
+            self.window = window
+            window.makeKeyAndVisible()
+        }
     }
 }
