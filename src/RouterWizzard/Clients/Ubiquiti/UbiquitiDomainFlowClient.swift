@@ -98,7 +98,7 @@ public class UbiquitiDomainFlowClient {
             var line = option.key
             
             if (option.value != "") {
-                line += "=\(option.value)"
+                line += "=/\(option.value)"
             }
             
             lines.append(line)
