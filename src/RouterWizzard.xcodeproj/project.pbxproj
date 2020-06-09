@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		F4376A832471727A00E7721F /* FavIcon in Frameworks */ = {isa = PBXBuildFile; productRef = F4376A822471727A00E7721F /* FavIcon */; };
 		F452E8A924805C31003E6A21 /* NMSSH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F452E8A524805ACF003E6A21 /* NMSSH.framework */; };
-		F452E8AA24805C31003E6A21 /* NMSSH.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F452E8A524805ACF003E6A21 /* NMSSH.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F49FCA032460AA0300ECE591 /* DomainAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49FCA022460AA0300ECE591 /* DomainAddView.swift */; };
 		F49FCA262461F40700ECE591 /* SwiftUIRefresh in Frameworks */ = {isa = PBXBuildFile; productRef = F49FCA252461F40700ECE591 /* SwiftUIRefresh */; };
 		F49FCA282461F52400ECE591 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F49FCA272461F52400ECE591 /* Settings.bundle */; };
@@ -28,20 +27,6 @@
 		F4D1FBDE2460933C006EA073 /* DomainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D1FBDD2460933C006EA073 /* DomainView.swift */; };
 		F4FE115D2466FE2E004791F8 /* DomainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FE115C2466FE2E004791F8 /* DomainModel.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		F452E8AB24805C31003E6A21 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				F452E8AA24805C31003E6A21 /* NMSSH.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		F452E8A524805ACF003E6A21 /* NMSSH.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NMSSH.framework; sourceTree = "<group>"; };
@@ -189,7 +174,6 @@
 				F4D1FBC124608C03006EA073 /* Sources */,
 				F4D1FBC224608C03006EA073 /* Frameworks */,
 				F4D1FBC324608C03006EA073 /* Resources */,
-				F452E8AB24805C31003E6A21 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -413,6 +397,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = SN9DM2UY8Q;
@@ -430,6 +415,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ASoft.RouterWizzard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -442,6 +428,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = SN9DM2UY8Q;
@@ -459,6 +446,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ASoft.RouterWizzard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
