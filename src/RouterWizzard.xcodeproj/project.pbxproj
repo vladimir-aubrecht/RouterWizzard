@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A4838AA249D8B7A0019546C /* FavIconProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4838A9249D8B7A0019546C /* FavIconProvider.swift */; };
 		F4376A832471727A00E7721F /* FavIcon in Frameworks */ = {isa = PBXBuildFile; productRef = F4376A822471727A00E7721F /* FavIcon */; };
 		F452E8A924805C31003E6A21 /* NMSSH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F452E8A524805ACF003E6A21 /* NMSSH.framework */; };
 		F49FCA032460AA0300ECE591 /* DomainAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49FCA022460AA0300ECE591 /* DomainAddView.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9A4838A9249D8B7A0019546C /* FavIconProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavIconProvider.swift; sourceTree = "<group>"; };
 		F452E8A524805ACF003E6A21 /* NMSSH.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NMSSH.framework; sourceTree = "<group>"; };
 		F49FCA022460AA0300ECE591 /* DomainAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainAddView.swift; sourceTree = "<group>"; };
 		F49FCA272461F52400ECE591 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				F4D1FBD324608C05006EA073 /* LaunchScreen.storyboard */,
 				F4D1FBD624608C05006EA073 /* Info.plist */,
 				F4A7321B24641F8A0074922F /* Bridging-Header.h */,
+				9A4838A9249D8B7A0019546C /* FavIconProvider.swift */,
 			);
 			path = RouterWizzard;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 				F4A6A10F246815C20057CCFA /* FirstStartupView.swift in Sources */,
 				F4D1FBCD24608C03006EA073 /* DomainListView.swift in Sources */,
 				F4A732212464263E0074922F /* SshError.swift in Sources */,
+				9A4838AA249D8B7A0019546C /* FavIconProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

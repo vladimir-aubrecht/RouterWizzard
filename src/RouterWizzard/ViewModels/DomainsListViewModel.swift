@@ -15,29 +15,28 @@ extension DomainListView {
         @Published private(set) var domainModels: [String: DomainModel] = [String: DomainModel]()
         
         private let domainFlowClient: UbiquitiDomainFlowClient
+        private let favIconProvider : FavIconProvider
         
-        init(domainFlowClient: UbiquitiDomainFlowClient) {
+        init(domainFlowClient: UbiquitiDomainFlowClient, favIconProvider : FavIconProvider) {
             self.domainFlowClient = domainFlowClient
+            self.favIconProvider = favIconProvider
             self.refreshDomains()
         }
         
         func refreshDomains() {
             let domains = (try? self.domainFlowClient.fetchDomains()) ?? [String]()
             self.domainModels = [String: DomainModel]()
-            let defaultImage = UIImage(named: "UnknownDomain")!
-            
+
             domains.forEach { domain in
-                let domainModel = DomainModel(domain: domain, image: defaultImage)
-                
-                _ = try! FavIcon.downloadPreferred("https://\(domain)") { result in
-                    if case let .success(image) = result {
-                        self.domainModels[domain] = DomainModel(domain: domain, image: image)
-                    }
-                }
-                
-                self.domainModels.updateValue(domainModel, forKey: domainModel.domain)
+                favIconProvider.refreshFavIcon(domain: domain, onRefresh: self.updateDomainModel)
+                self.updateDomainModel(domain: domain)
             }
             
+        }
+        
+        func updateDomainModel(domain: String) {
+            let domainModel = DomainModel(domain: domain, image: favIconProvider.getFavIcon(domain: domain))
+            self.domainModels.updateValue(domainModel, forKey: domainModel.domain)
         }
         
         func addDomain(domain: String) {

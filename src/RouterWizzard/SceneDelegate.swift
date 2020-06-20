@@ -73,8 +73,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             
             let ubiquitiClient = UbiquitiClient(sshClient: sshClient!)
             let ubiquitiDomainFlowClient = UbiquitiDomainFlowClient(ubiquitiClient: ubiquitiClient)
+            let favIconProvider = FavIconProvider()
             
-            let domainListViewModel = DomainListView.DomainsListViewModel(domainFlowClient: ubiquitiDomainFlowClient)
+            let domainListViewModel = DomainListView.DomainsListViewModel(domainFlowClient: ubiquitiDomainFlowClient, favIconProvider: favIconProvider)
             let domainListView = DomainListView(domainListViewModel: domainListViewModel)
 
             self.setWindowController(scene, hostingController: UIHostingController(rootView: domainListView))
