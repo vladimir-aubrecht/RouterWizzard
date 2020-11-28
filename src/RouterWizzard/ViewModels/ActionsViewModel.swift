@@ -10,16 +10,31 @@ import Foundation
 import FavIcon
 import UIKit
 
-extension UploadOvpnProfileView {
-    class ActionsViewModel : ObservableObject {
-        private let actionsClient: UbiquitiActionsClient
+class ActionsViewModel : ObservableObject {
+    private let actionsClient: UbiquitiActionsClient
+    
+    init(actionsClient: UbiquitiActionsClient) {
+        self.actionsClient = actionsClient
+    }
+    
+    func addVpnInterface() {
         
-        init(actionsClient: UbiquitiActionsClient) {
-            self.actionsClient = actionsClient
-        }
+    }
+    
+    func fetchVpnInterfaces() -> [String]{
+        var output = [String]()
         
-        func uploadOvpnProfile(profile: String, username: String, password: String) {
-            try! self.actionsClient.uploadOvpnFile(content: profile, username: username, password: password)
-        }
+        output.append("VPN interface!")
+        
+        return output
+    }
+    
+    func deleteVpnInterface() {
+        
+    }
+    
+    func uploadOvpnProfile(profile: String, username: String, password: String) {
+        try! self.actionsClient.uploadOvpnFile(content: profile, username: username, password: password)
     }
 }
+

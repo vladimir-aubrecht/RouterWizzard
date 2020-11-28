@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct UploadOvpnProfileView: View {
+struct UploadOvpnView: View {
     @State private var isShowingOvpnPicker = false
     @ObservedObject var actionsViewModel: ActionsViewModel
     @State private var username = ""

@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct DomainView: View {
+struct DomainRowView: View {
     public let domainModel: DomainModel;
     
     var body: some View {

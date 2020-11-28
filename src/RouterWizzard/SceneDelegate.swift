@@ -77,10 +77,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let ubiquitiActionsClient = UbiquitiActionsClient(fileSystemClient: filesystemClient)
             let favIconProvider = FavIconProvider()
             
-            let domainListViewModel = DomainListView.DomainsListViewModel(domainFlowClient: ubiquitiDomainFlowClient, favIconProvider: favIconProvider)
-            let actionsViewModel = UploadOvpnProfileView.ActionsViewModel(actionsClient: ubiquitiActionsClient)
+            let domainListViewModel = DomainsViewModel(domainFlowClient: ubiquitiDomainFlowClient, favIconProvider: favIconProvider)
+            let actionsViewModel = ActionsViewModel(actionsClient: ubiquitiActionsClient)
             
-            let domainListView = DomainListView(domainListViewModel: domainListViewModel, actionsViewModel: actionsViewModel)
+            let domainListView = MainTabView(domainListViewModel: domainListViewModel, actionsViewModel: actionsViewModel)
             
 
             self.setWindowController(scene, hostingController: UIHostingController(rootView: domainListView))

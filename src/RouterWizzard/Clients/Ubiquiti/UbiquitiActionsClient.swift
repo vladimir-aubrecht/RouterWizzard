@@ -17,6 +17,14 @@ public class UbiquitiActionsClient {
         self.fileSystemClient = fileSystemClient
     }
     
+    public func fetchVpnInterfaces() {
+    
+    }
+    
+    public func addVpnInterface() {
+        
+    }
+    
     public func uploadOvpnFile(content : String, username : String, password : String) throws {
         let hostname = try! parseHostname(content: content)
         let ovpnProfileFilename = filenamePrefix + hostname

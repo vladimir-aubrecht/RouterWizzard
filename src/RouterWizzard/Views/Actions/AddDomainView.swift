@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct DomainAddView: View {
+struct AddDomainView: View {
     let onSave: (String) -> Void
     @State private var domain: String = ""
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>;
