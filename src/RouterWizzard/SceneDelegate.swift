@@ -72,11 +72,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             try self.sshClient!.authenticate(password: password)
             
             let ubiquitiClient = UbiquitiClient(sshClient: sshClient!)
+            let filesystemClient = FileSystemClient(sshClient: sshClient!)
             let ubiquitiDomainFlowClient = UbiquitiDomainFlowClient(ubiquitiClient: ubiquitiClient)
+            let ubiquitiActionsClient = UbiquitiActionsClient(fileSystemClient: filesystemClient)
             let favIconProvider = FavIconProvider()
             
             let domainListViewModel = DomainListView.DomainsListViewModel(domainFlowClient: ubiquitiDomainFlowClient, favIconProvider: favIconProvider)
-            let domainListView = DomainListView(domainListViewModel: domainListViewModel)
+            let actionsViewModel = UploadOvpnProfileView.ActionsViewModel(actionsClient: ubiquitiActionsClient)
+            
+            let domainListView = DomainListView(domainListViewModel: domainListViewModel, actionsViewModel: actionsViewModel)
+            
 
             self.setWindowController(scene, hostingController: UIHostingController(rootView: domainListView))
             

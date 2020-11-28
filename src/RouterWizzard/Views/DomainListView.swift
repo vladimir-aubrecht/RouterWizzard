@@ -11,34 +11,57 @@ import SwiftUIRefresh
 
 struct DomainListView: View {
     @ObservedObject var domainListViewModel: DomainsListViewModel
+    @ObservedObject var actionsViewModel: UploadOvpnProfileView.ActionsViewModel
     @State private var isShowing = false
     
-    init(domainListViewModel: DomainsListViewModel) {
+    init(domainListViewModel: DomainsListViewModel, actionsViewModel: UploadOvpnProfileView.ActionsViewModel) {
         self.domainListViewModel = domainListViewModel
+        self.actionsViewModel = actionsViewModel
     }
     
     var body: some View {
-        VStack {
-            NavigationView {
-                List {
-                    ForEach(self.getDomainModels(), id: \.domain) { domainModel in
-                        DomainView(domainModel: domainModel)
-                   }
-                    .onDelete(perform: delete)
-                }
-                .navigationBarTitle(Text("Domains"))
-                .navigationBarItems(
-                    trailing:
-                    NavigationLink(destination: DomainAddView(onSave: self.domainListViewModel.addDomain)) {
-                        Text("Add")
+        TabView {
+            VStack {
+                NavigationView {
+                    List {
+                        ForEach(self.getDomainModels(), id: \.domain) { domainModel in
+                            DomainView(domainModel: domainModel)
+                       }
+                        .onDelete(perform: delete)
                     }
-                )
-                .pullToRefresh(isShowing: $isShowing) {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                        self.isShowing = false
-                        self.domainListViewModel.refreshDomains()
+                    .navigationBarTitle(Text("Domains"))
+                    .navigationBarItems(
+                        trailing:
+                        NavigationLink(destination: DomainAddView(onSave: self.domainListViewModel.addDomain)) {
+                            Text("Add")
+                        }
+                    )
+                    .pullToRefresh(isShowing: $isShowing) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            self.isShowing = false
+                            self.domainListViewModel.refreshDomains()
+                        }
                     }
                 }
+            }
+            .tabItem {
+                Image(systemName: "house.fill")
+                Text("Domains")
+            }
+                
+            VStack {
+                NavigationView {
+                    List {
+                        NavigationLink(destination: UploadOvpnProfileView(actionsViewModel: self.actionsViewModel)) {
+                            Text("Upload ovpn profile")
+                        }
+                    }
+                    .navigationBarTitle(Text("Actions"))
+                }
+            }
+            .tabItem {
+                Image(systemName: "bookmark.circle.fill")
+                Text("Actions")
             }
         }
     }
