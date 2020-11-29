@@ -11,6 +11,7 @@ import SwiftUI
 struct ManageVpnView: View {
     @ObservedObject var actionsViewModel: ActionsViewModel
     @State private var isShowing = false
+    @State var showSheetView = false
     
     init(actionsViewModel: ActionsViewModel) {
         self.actionsViewModel = actionsViewModel
@@ -31,16 +32,14 @@ struct ManageVpnView: View {
         }
         .navigationBarTitle(Text("VPN interfaces"))
         .navigationBarItems(
-            trailing:
-                NavigationLink(destination: AddVpnInterfaceView(actionsViewModel: self.actionsViewModel)) {
-                Text("Add")
+            trailing:Button(action: {
+                self.showSheetView.toggle()
+            }) {
+                  Text("Add")
             }
         )
-        .pullToRefresh(isShowing: $isShowing) {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.isShowing = false
-                //self.domainListViewModel.refreshDomains()
-            }
+        .sheet(isPresented: $showSheetView) {
+            AddVpnInterfaceView(actionsViewModel: self.actionsViewModel, showSheetView: self.$showSheetView)
         }
     }
     
@@ -56,7 +55,7 @@ struct ManageVpnView: View {
         let interfaces = self.getVpnInterfaces()
         offsets.forEach { index in
             let interface = interfaces[index]
-            self.actionsViewModel.deleteVpnInterface()
+            self.actionsViewModel.deleteVpnInterface(interface: interface)
         }
     }
 }

@@ -41,6 +41,15 @@ public class UbiquitiActionsClient {
         return interfaces
     }
     
+    public func deleteVpnInterface(interface: OpenVpnInterfaceModel) {
+        let name = interface.name!
+        try! self.ubiquitiClient.beginSession()
+        try! self.ubiquitiClient.delete(key: "interfaces openvpn \(name)")
+        try! self.ubiquitiClient.commit()
+        try! self.ubiquitiClient.save()
+        try! self.ubiquitiClient.endSession()
+    }
+    
     public func addVpnInterface(vpnProfileFilename: String) {
         var interfaces = self.fetchVpnInterfaces()
         interfaces.sort {$0.name!.localizedStandardCompare($1.name!) == .orderedAscending}
@@ -52,16 +61,18 @@ public class UbiquitiActionsClient {
         let description = vpnProfileFilename.replacingOccurrences(of: ".ovpn", with: "")
         let interfaceName = "vtun" + String(newInterfaceIndex)
 
-        //try! self.ubiquitiClient.beginSession()
-        //try! self.ubiquitiClient.set(key: "interfaces openvpn \(interfaceName) config-file \(profileFullPath)")
-        //try! self.ubiquitiClient.set(key: "interfaces openvpn \(interfaceName) descripton \(description)")
-        //try! self.ubiquitiClient.commit()
-        //try! self.ubiquitiClient.save()
-        //try! self.ubiquitiClient.endSession()
+        try! self.ubiquitiClient.beginSession()
+        try! self.ubiquitiClient.set(key: "interfaces openvpn \(interfaceName) config-file \(profileFullPath)")
+        try! self.ubiquitiClient.set(key: "interfaces openvpn \(interfaceName) description \(description)")
+        try! self.ubiquitiClient.commit()
+        try! self.ubiquitiClient.save()
+        try! self.ubiquitiClient.endSession()
     }
     
     public func listOvpnFiles() throws -> [String]{
-        return try! self.fileSystemClient.listDirectory(path: self.vpnConfigPath)
+        let files = try! self.fileSystemClient.listDirectory(path: self.vpnConfigPath + "*.ovpn")
+
+        return files.map { String($0.split(separator: "/").last!) }
     }
     
     public func uploadOvpnFile(content : String, username : String, password : String) throws {

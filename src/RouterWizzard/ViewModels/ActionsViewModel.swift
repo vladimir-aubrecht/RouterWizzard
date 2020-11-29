@@ -17,16 +17,16 @@ class ActionsViewModel : ObservableObject {
         self.actionsClient = actionsClient
     }
     
-    func addVpnInterface() {
-        
+    func addVpnInterface(vpnProfileFilename: String) {
+        self.actionsClient.addVpnInterface(vpnProfileFilename: vpnProfileFilename)
     }
     
     func fetchVpnInterfaces() -> [OpenVpnInterfaceModel] {
         return self.actionsClient.fetchVpnInterfaces()
     }
     
-    func deleteVpnInterface() {
-        
+    func deleteVpnInterface(interface: OpenVpnInterfaceModel) {
+        self.actionsClient.deleteVpnInterface(interface: interface)
     }
     
     func uploadOvpnProfile(profile: String, username: String, password: String) {
