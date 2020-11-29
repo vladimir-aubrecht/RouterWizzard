@@ -41,8 +41,27 @@ public class UbiquitiActionsClient {
         return interfaces
     }
     
-    public func addVpnInterface() {
+    public func addVpnInterface(vpnProfileFilename: String) {
+        var interfaces = self.fetchVpnInterfaces()
+        interfaces.sort {$0.name!.localizedStandardCompare($1.name!) == .orderedAscending}
+
+        let lastUsedVtunIndex = Int(interfaces[interfaces.count - 1].name!.replacingOccurrences(of: "vtun", with: ""))
+        let newInterfaceIndex = lastUsedVtunIndex! + 1
         
+        let profileFullPath = vpnConfigPath + vpnProfileFilename
+        let description = vpnProfileFilename.replacingOccurrences(of: ".ovpn", with: "")
+        let interfaceName = "vtun" + String(newInterfaceIndex)
+
+        //try! self.ubiquitiClient.beginSession()
+        //try! self.ubiquitiClient.set(key: "interfaces openvpn \(interfaceName) config-file \(profileFullPath)")
+        //try! self.ubiquitiClient.set(key: "interfaces openvpn \(interfaceName) descripton \(description)")
+        //try! self.ubiquitiClient.commit()
+        //try! self.ubiquitiClient.save()
+        //try! self.ubiquitiClient.endSession()
+    }
+    
+    public func listOvpnFiles() throws -> [String]{
+        return try! self.fileSystemClient.listDirectory(path: self.vpnConfigPath)
     }
     
     public func uploadOvpnFile(content : String, username : String, password : String) throws {

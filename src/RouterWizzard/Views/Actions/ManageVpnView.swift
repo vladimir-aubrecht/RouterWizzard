@@ -32,7 +32,7 @@ struct ManageVpnView: View {
         .navigationBarTitle(Text("VPN interfaces"))
         .navigationBarItems(
             trailing:
-                NavigationLink(destination: AddVpnInterfaceView()) {
+                NavigationLink(destination: AddVpnInterfaceView(actionsViewModel: self.actionsViewModel)) {
                 Text("Add")
             }
         )

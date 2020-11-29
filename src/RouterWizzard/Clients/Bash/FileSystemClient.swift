@@ -19,4 +19,11 @@ class FileSystemClient {
         _ = try self.sshClient.execute(command: "touch \(path)");
         _ = try self.sshClient.execute(command: "echo \"\(content)\" > \(path)");
     }
+    
+    public func listDirectory(path: String) throws -> [String] {
+        let result = try self.sshClient.execute(command: "ls \(path)")
+        let lines = result.split(separator: "\n", omittingEmptySubsequences: true).map(String.init)
+        
+        return lines
+    }
 }
