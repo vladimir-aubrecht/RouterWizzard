@@ -18,15 +18,21 @@ struct ManageVpnView: View {
     
     var body: some View {
         List {
-            ForEach(self.actionsViewModel.fetchVpnInterfaces(), id: \.name) { vpnInterface in
-                Text(vpnInterface.name)
+            ForEach(self.getVpnInterfaces(), id: \.name) { vpnInterface in
+                HStack {
+                    Rectangle().fill(vpnInterface.disable! ? Color.red : Color.green).frame(width: 10)
+                    VStack(alignment: .leading) {
+                    Text(vpnInterface.name!)
+                    Text(vpnInterface.configfile).font(.system(size: 10))
+                    }
+                }
            }
             .onDelete(perform: delete)
         }
         .navigationBarTitle(Text("VPN interfaces"))
         .navigationBarItems(
             trailing:
-                NavigationLink(destination: Text("not done yet")) {
+                NavigationLink(destination: AddVpnInterfaceView()) {
                 Text("Add")
             }
         )
@@ -41,7 +47,7 @@ struct ManageVpnView: View {
     private func getVpnInterfaces() -> [OpenVpnInterfaceModel]
     {
         var models = self.actionsViewModel.fetchVpnInterfaces()
-        models.sort { $0.name < $1.name }
+        models.sort { $0.name! < $1.name! }
         
         return models
     }

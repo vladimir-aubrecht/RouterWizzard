@@ -23,8 +23,22 @@ public class UbiquitiActionsClient {
     }
     
     public func fetchVpnInterfaces() -> [OpenVpnInterfaceModel] {
-        var result = try! self.ubiquitiClient.show(key: "interfaces openvpn")
-        return try! self.ubiquitiDeserializer.deserialize(content: result)
+        let result = try! self.ubiquitiClient.show(key: "interfaces openvpn")
+        let deserializedInterfaces: [String: OpenVpnInterfaceModel] = try! self.ubiquitiDeserializer.deserialize(content: result)
+        
+        var interfaces = [OpenVpnInterfaceModel]()
+        deserializedInterfaces.forEach { interface in
+            var modifiedValue = interface.value
+            modifiedValue.name = interface.key
+            modifiedValue.disable = modifiedValue.disable == nil ? false : modifiedValue.disable
+            interfaces.append(modifiedValue)
+        }
+        
+        for i in 0...interfaces.count - 1 {
+            interfaces[i].configfile = interfaces[i].configfile.replacingOccurrences(of: vpnConfigPath, with: "")
+        }
+        
+        return interfaces
     }
     
     public func addVpnInterface() {

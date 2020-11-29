@@ -8,9 +8,9 @@
 
 import Foundation
 
-public struct OpenVpnInterfaceModel {
-    public let description: String
-    public let configFile: String
-    public let isDisabled: Bool
-    public let name: String
+public struct OpenVpnInterfaceModel : Decodable {
+    public var description: String
+    public var configfile: String
+    public var disable: Bool? = false
+    public var name: String?
 }

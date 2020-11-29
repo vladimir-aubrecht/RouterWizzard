@@ -15,6 +15,7 @@
 		9A7C16112572E122000BBC4F /* ManageVpnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7C16102572E122000BBC4F /* ManageVpnView.swift */; };
 		9A7C161525731B9F000BBC4F /* UbiquitiDeserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7C161425731B9F000BBC4F /* UbiquitiDeserializer.swift */; };
 		9A7C161C25732031000BBC4F /* OpenVpnInterfaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7C161B25732031000BBC4F /* OpenVpnInterfaceModel.swift */; };
+		9A7C16212573EC84000BBC4F /* AddVpnInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7C16202573EC84000BBC4F /* AddVpnInterface.swift */; };
 		9ADD00FF2571D740002E4369 /* UbiquitiActionsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADD00FE2571D740002E4369 /* UbiquitiActionsClient.swift */; };
 		9ADD01022571DB3D002E4369 /* OvpnDocumentPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADD01012571DB3D002E4369 /* OvpnDocumentPickerView.swift */; };
 		9ADD01052571F14D002E4369 /* ActionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADD01042571F14D002E4369 /* ActionsViewModel.swift */; };
@@ -49,6 +50,7 @@
 		9A7C16102572E122000BBC4F /* ManageVpnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageVpnView.swift; sourceTree = "<group>"; };
 		9A7C161425731B9F000BBC4F /* UbiquitiDeserializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UbiquitiDeserializer.swift; sourceTree = "<group>"; };
 		9A7C161B25732031000BBC4F /* OpenVpnInterfaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenVpnInterfaceModel.swift; sourceTree = "<group>"; };
+		9A7C16202573EC84000BBC4F /* AddVpnInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVpnInterface.swift; sourceTree = "<group>"; };
 		9ADD00FE2571D740002E4369 /* UbiquitiActionsClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UbiquitiActionsClient.swift; sourceTree = "<group>"; };
 		9ADD01012571DB3D002E4369 /* OvpnDocumentPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OvpnDocumentPickerView.swift; sourceTree = "<group>"; };
 		9ADD01042571F14D002E4369 /* ActionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsViewModel.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				F49FCA022460AA0300ECE591 /* AddDomainView.swift */,
 				9A7C15F825720572000BBC4F /* UploadOvpnProfileView.swift */,
 				9A7C16102572E122000BBC4F /* ManageVpnView.swift */,
+				9A7C16202573EC84000BBC4F /* AddVpnInterface.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -339,6 +342,7 @@
 				F4A6A10F246815C20057CCFA /* FirstStartupView.swift in Sources */,
 				F4D1FBCD24608C03006EA073 /* MainTabView.swift in Sources */,
 				F4A732212464263E0074922F /* SshError.swift in Sources */,
+				9A7C16212573EC84000BBC4F /* AddVpnInterface.swift in Sources */,
 				9A7C15F525720336000BBC4F /* OvpnError.swift in Sources */,
 				9ADD01052571F14D002E4369 /* ActionsViewModel.swift in Sources */,
 				9A4838AA249D8B7A0019546C /* FavIconProvider.swift in Sources */,

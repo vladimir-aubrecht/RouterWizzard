@@ -10,70 +10,72 @@ import Foundation
 
 class UbiquitiDeserializer
 {
-    /*private class InternalDecoder : Decoder {
-        var codingPath: [CodingKey]
+    func deserialize<T: Decodable>(content: String) throws -> [String: T] {
         
-        var userInfo: [CodingUserInfoKey : Any]
-        let content: String
+        let jsonData = self.convertToJson(content: content).data(using: .utf8)!
         
-        public init(content: String) {
-            self.content = content
-        }
-        
-        func container<Key>(keyedBy type: Key.Type) throws -> KeyedDecodingContainer<Key> where Key : CodingKey {
-            <#code#>
-        }
-        
-        func unkeyedContainer() throws -> UnkeyedDecodingContainer {
-            <#code#>
-        }
-        
-        func singleValueContainer() throws -> SingleValueDecodingContainer {
-            <#code#>
-        }
-        
-        
-    }*/
+        let decoder = JSONDecoder()
+        return try! decoder.decode([String: T].self, from: jsonData)
+    }
     
-    func deserialize(content: String) throws -> [OpenVpnInterfaceModel] {
-        
+    private func convertToJson(content: String) -> String {
         let lines = content.split(separator: "\n", omittingEmptySubsequences: true)
         
-        var interfaces: [OpenVpnInterfaceModel] = [OpenVpnInterfaceModel]()
-        
-        var currentProcessedNode: String? = nil
-        var currentInterfaceName: String? = nil
-        var currentConfigFile: String? = nil
-        var currentDescription: String? = nil
-        var isDisabled: Bool = false
-        
-        lines.forEach{ line in
-            let trimmedLine = line.trimmingCharacters(in: .whitespacesAndNewlines)
+        var outputJson: String = "{"
+        var openedNodes = 0
+        for j in 0...lines.count - 1 {
+            let trimmedLine = lines[j].trimmingCharacters(in: .whitespacesAndNewlines)
+            let isNextLineCloseNodeLine = j+1 >= lines.count ? true : lines[j+1].trimmingCharacters(in: .whitespacesAndNewlines) == "}"
             
-            if trimmedLine.starts(with: "openvpn") {
-                currentProcessedNode = "openvpn"
-                currentInterfaceName = String(trimmedLine.split(separator: " ")[1])
-            }
-            else if currentProcessedNode == "openvpn" && trimmedLine.starts(with: "config-file") {
-                currentConfigFile = String(trimmedLine.split(separator: " ")[1])
-            }
-            else if currentProcessedNode == "openvpn" && trimmedLine.starts(with: "description") {
-                currentDescription = String(trimmedLine.split(separator: " ")[1])
-            }
-            else if currentProcessedNode == "openvpn" && trimmedLine.starts(with: "disable") {
-                isDisabled = true
-            }
-            else if currentProcessedNode == "openvpn" && trimmedLine.starts(with: "}") {
-                let interface: OpenVpnInterfaceModel = OpenVpnInterfaceModel(description: currentDescription!, configFile: currentConfigFile!, isDisabled: isDisabled, name: currentInterfaceName!)
-                interfaces.append(interface)
+            if (trimmedLine == "}") {
+                for _ in 0...openedNodes {
+                    outputJson += "}"
+                }
+                openedNodes = 0
                 
-                currentProcessedNode = nil
-                currentInterfaceName = nil
-                currentConfigFile = nil
-                currentDescription = nil
+                if j < lines.count - 1 {
+                    outputJson += ","
+                }
+                
+                continue
+            }
+            
+            var words = trimmedLine.split(separator: " ", omittingEmptySubsequences: true)
+            let isNode = words[words.count - 1] == "{"
+            
+            if (isNode) {
+                words = words.dropFirst().dropLast()
+                openedNodes = words.count - 1
+            }
+            
+            var i = 0
+            while (i < words.count) {
+                if (isNode) {
+                    outputJson += "\"" + words[i] + "\": {"
+                    i += 1
+                }
+                else
+                {
+                    if i + 1 < words.count {
+                        let key = words[i].replacingOccurrences(of: "-", with: "")
+                        let value = words[i + 1]
+                        outputJson += "\"" + key + "\": \"" + value + "\""
+                        
+                        if !isNextLineCloseNodeLine {
+                            outputJson += ","
+                        }
+                        
+                        i += 2
+                    }
+                    else {
+                        outputJson += "\"" + words[i] + "\": true"
+                        i += 1
+                    }
+                }
             }
         }
         
-        return interfaces
+        outputJson += "}"
+        return outputJson
     }
 }
