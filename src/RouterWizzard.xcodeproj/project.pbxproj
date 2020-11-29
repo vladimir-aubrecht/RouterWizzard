@@ -13,6 +13,8 @@
 		9A7C15FC2572D3D1000BBC4F /* ActionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7C15FB2572D3D1000BBC4F /* ActionsView.swift */; };
 		9A7C16022572D5AE000BBC4F /* DomainsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7C16012572D5AE000BBC4F /* DomainsView.swift */; };
 		9A7C16112572E122000BBC4F /* ManageVpnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7C16102572E122000BBC4F /* ManageVpnView.swift */; };
+		9A7C161525731B9F000BBC4F /* UbiquitiDeserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7C161425731B9F000BBC4F /* UbiquitiDeserializer.swift */; };
+		9A7C161C25732031000BBC4F /* OpenVpnInterfaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7C161B25732031000BBC4F /* OpenVpnInterfaceModel.swift */; };
 		9ADD00FF2571D740002E4369 /* UbiquitiActionsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADD00FE2571D740002E4369 /* UbiquitiActionsClient.swift */; };
 		9ADD01022571DB3D002E4369 /* OvpnDocumentPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADD01012571DB3D002E4369 /* OvpnDocumentPickerView.swift */; };
 		9ADD01052571F14D002E4369 /* ActionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADD01042571F14D002E4369 /* ActionsViewModel.swift */; };
@@ -45,6 +47,8 @@
 		9A7C15FB2572D3D1000BBC4F /* ActionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsView.swift; sourceTree = "<group>"; };
 		9A7C16012572D5AE000BBC4F /* DomainsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainsView.swift; sourceTree = "<group>"; };
 		9A7C16102572E122000BBC4F /* ManageVpnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageVpnView.swift; sourceTree = "<group>"; };
+		9A7C161425731B9F000BBC4F /* UbiquitiDeserializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UbiquitiDeserializer.swift; sourceTree = "<group>"; };
+		9A7C161B25732031000BBC4F /* OpenVpnInterfaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenVpnInterfaceModel.swift; sourceTree = "<group>"; };
 		9ADD00FE2571D740002E4369 /* UbiquitiActionsClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UbiquitiActionsClient.swift; sourceTree = "<group>"; };
 		9ADD01012571DB3D002E4369 /* OvpnDocumentPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OvpnDocumentPickerView.swift; sourceTree = "<group>"; };
 		9ADD01042571F14D002E4369 /* ActionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsViewModel.swift; sourceTree = "<group>"; };
@@ -122,6 +126,14 @@
 			path = Bash;
 			sourceTree = "<group>";
 		};
+		9A7C161725731FAE000BBC4F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9A7C161B25732031000BBC4F /* OpenVpnInterfaceModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		F4A7321524641E120074922F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -153,10 +165,12 @@
 		F4A73223246428E30074922F /* Ubiquiti */ = {
 			isa = PBXGroup;
 			children = (
+				9A7C161725731FAE000BBC4F /* Models */,
 				F4A73224246428FB0074922F /* UbiquitiClient.swift */,
 				F4A7322924646B910074922F /* UbiquitiDomainFlowClient.swift */,
 				9ADD00FE2571D740002E4369 /* UbiquitiActionsClient.swift */,
 				9A7C15F425720336000BBC4F /* OvpnError.swift */,
+				9A7C161425731B9F000BBC4F /* UbiquitiDeserializer.swift */,
 			);
 			path = Ubiquiti;
 			sourceTree = "<group>";
@@ -307,6 +321,7 @@
 			files = (
 				9A7C15FC2572D3D1000BBC4F /* ActionsView.swift in Sources */,
 				F49FCA032460AA0300ECE591 /* AddDomainView.swift in Sources */,
+				9A7C161525731B9F000BBC4F /* UbiquitiDeserializer.swift in Sources */,
 				F4A7322A24646B910074922F /* UbiquitiDomainFlowClient.swift in Sources */,
 				9A7C16112572E122000BBC4F /* ManageVpnView.swift in Sources */,
 				F4D1FBC924608C03006EA073 /* AppDelegate.swift in Sources */,
@@ -319,6 +334,7 @@
 				9A7C15F925720572000BBC4F /* UploadOvpnProfileView.swift in Sources */,
 				F4FE115D2466FE2E004791F8 /* DomainModel.swift in Sources */,
 				9ADD00FF2571D740002E4369 /* UbiquitiActionsClient.swift in Sources */,
+				9A7C161C25732031000BBC4F /* OpenVpnInterfaceModel.swift in Sources */,
 				9A7C16022572D5AE000BBC4F /* DomainsView.swift in Sources */,
 				F4A6A10F246815C20057CCFA /* FirstStartupView.swift in Sources */,
 				F4D1FBCD24608C03006EA073 /* MainTabView.swift in Sources */,

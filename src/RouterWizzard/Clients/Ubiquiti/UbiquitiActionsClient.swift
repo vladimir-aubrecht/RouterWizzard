@@ -10,15 +10,21 @@ import Foundation
 
 public class UbiquitiActionsClient {
     private let fileSystemClient: FileSystemClient
+    private let ubiquitiClient: UbiquitiClient
+    private let ubiquitiDeserializer: UbiquitiDeserializer
+    
     private let filenamePrefix: String = "router_wizzard_"
     private let vpnConfigPath: String = "/config/auth/";
     
-    init(fileSystemClient: FileSystemClient) {
+    init(ubiquitiClient: UbiquitiClient, fileSystemClient: FileSystemClient, ubiquitiDeserializer: UbiquitiDeserializer) {
         self.fileSystemClient = fileSystemClient
+        self.ubiquitiClient = ubiquitiClient
+        self.ubiquitiDeserializer = ubiquitiDeserializer
     }
     
-    public func fetchVpnInterfaces() {
-    
+    public func fetchVpnInterfaces() -> [OpenVpnInterfaceModel] {
+        var result = try! self.ubiquitiClient.show(key: "interfaces openvpn")
+        return try! self.ubiquitiDeserializer.deserialize(content: result)
     }
     
     public func addVpnInterface() {

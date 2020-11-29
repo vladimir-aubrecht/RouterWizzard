@@ -18,8 +18,8 @@ struct ManageVpnView: View {
     
     var body: some View {
         List {
-            ForEach(self.actionsViewModel.fetchVpnInterfaces(), id: \.self) { vpnInterface in
-                Text(vpnInterface)
+            ForEach(self.actionsViewModel.fetchVpnInterfaces(), id: \.name) { vpnInterface in
+                Text(vpnInterface.name)
            }
             .onDelete(perform: delete)
         }
@@ -38,10 +38,10 @@ struct ManageVpnView: View {
         }
     }
     
-    private func getVpnInterfaces() -> [String]
+    private func getVpnInterfaces() -> [OpenVpnInterfaceModel]
     {
         var models = self.actionsViewModel.fetchVpnInterfaces()
-        models.sort { $0 < $1 }
+        models.sort { $0.name < $1.name }
         
         return models
     }

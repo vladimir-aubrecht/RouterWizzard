@@ -74,7 +74,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let ubiquitiClient = UbiquitiClient(sshClient: sshClient!)
             let filesystemClient = FileSystemClient(sshClient: sshClient!)
             let ubiquitiDomainFlowClient = UbiquitiDomainFlowClient(ubiquitiClient: ubiquitiClient)
-            let ubiquitiActionsClient = UbiquitiActionsClient(fileSystemClient: filesystemClient)
+            let ubiquitiActionsClient = UbiquitiActionsClient(ubiquitiClient: ubiquitiClient, fileSystemClient: filesystemClient, ubiquitiDeserializer: UbiquitiDeserializer())
             let favIconProvider = FavIconProvider()
             
             let domainListViewModel = DomainsViewModel(domainFlowClient: ubiquitiDomainFlowClient, favIconProvider: favIconProvider)

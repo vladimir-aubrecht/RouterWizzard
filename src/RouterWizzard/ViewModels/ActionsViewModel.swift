@@ -21,12 +21,8 @@ class ActionsViewModel : ObservableObject {
         
     }
     
-    func fetchVpnInterfaces() -> [String]{
-        var output = [String]()
-        
-        output.append("VPN interface!")
-        
-        return output
+    func fetchVpnInterfaces() -> [OpenVpnInterfaceModel] {
+        return self.actionsClient.fetchVpnInterfaces()
     }
     
     func deleteVpnInterface() {
