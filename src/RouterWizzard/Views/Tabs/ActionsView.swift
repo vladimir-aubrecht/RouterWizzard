@@ -26,6 +26,9 @@ struct ActionsView: View {
                     NavigationLink(destination: ManageVpnView(actionsViewModel: self.actionsViewModel)) {
                         Text("Manage VPNs")
                     }
+                    NavigationLink(destination: ManageRouteHops(actionsViewModel: self.actionsViewModel)) {
+                        Text("Manage routes hops")
+                    }
                 }
                 .navigationBarTitle(Text("Actions"))
             }

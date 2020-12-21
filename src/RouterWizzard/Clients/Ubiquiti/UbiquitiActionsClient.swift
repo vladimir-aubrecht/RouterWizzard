@@ -22,6 +22,35 @@ public class UbiquitiActionsClient {
         self.ubiquitiDeserializer = ubiquitiDeserializer
     }
     
+    public func addRouteHop(tableName: Int, outgoingInterfaceName: String) {
+        let table = tableName.description
+        let cmd = "protocols static table \(table) interface-route 0.0.0.0/0 next-hop-interface \(outgoingInterfaceName) description RouterWizzard"
+        
+        try! self.ubiquitiClient.beginSession()
+        try! self.ubiquitiClient.set(key: cmd)
+        try! self.ubiquitiClient.commit()
+        try! self.ubiquitiClient.save()
+        try! self.ubiquitiClient.endSession()
+    }
+    
+    public func fetchRouteHops() -> [HopTableModel] {
+        let result = try! self.ubiquitiClient.show(key: "protocols static table")
+        let deserializedHops: [String: [String: [String: [String: String]]]] = try! self.ubiquitiDeserializer.deserialize(content: result)
+        
+        var tables = [HopTableModel]()
+        deserializedHops.forEach { hop in
+            let tableName = hop.key
+            
+            hop.value["0.0.0.0/0"]?.forEach { interface in
+                let interfaceName = interface.key
+                let hopeTable = HopTableModel(outgoingInterface: interfaceName, name: tableName)
+                tables.append(hopeTable)
+            }
+        }
+        
+        return tables
+    }
+    
     public func fetchVpnInterfaces() -> [OpenVpnInterfaceModel] {
         let result = try! self.ubiquitiClient.show(key: "interfaces openvpn")
         let deserializedInterfaces: [String: OpenVpnInterfaceModel] = try! self.ubiquitiDeserializer.deserialize(content: result)

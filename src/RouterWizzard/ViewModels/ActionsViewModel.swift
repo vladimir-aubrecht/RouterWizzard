@@ -17,6 +17,14 @@ class ActionsViewModel : ObservableObject {
         self.actionsClient = actionsClient
     }
     
+    public func addRouteHop(tableName: Int, outgoingInterfaceName: String) {
+        self.actionsClient.addRouteHop(tableName: tableName, outgoingInterfaceName: outgoingInterfaceName)
+    }
+    
+    func fetchRouteHops() -> [HopTableModel] {
+        return self.actionsClient.fetchRouteHops()
+    }
+    
     func addVpnInterface(vpnProfileFilename: String) {
         self.actionsClient.addVpnInterface(vpnProfileFilename: vpnProfileFilename)
     }

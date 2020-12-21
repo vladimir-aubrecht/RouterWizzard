@@ -33,7 +33,7 @@ class UbiquitiDeserializer
                 }
                 openedNodes = 0
                 
-                if j < lines.count - 1 {
+                if j < lines.count - 1 && lines[j + 1].trimmingCharacters(in: .whitespacesAndNewlines) != "}"{
                     outputJson += ","
                 }
                 
