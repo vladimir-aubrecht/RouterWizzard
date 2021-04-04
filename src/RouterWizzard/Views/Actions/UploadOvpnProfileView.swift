@@ -13,6 +13,7 @@ struct UploadOvpnView: View {
     @ObservedObject var actionsViewModel: ActionsViewModel
     @State private var username = ""
     @State private var password = ""
+    @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>;
 
     init(actionsViewModel: ActionsViewModel) {
         self.actionsViewModel = actionsViewModel
@@ -20,8 +21,10 @@ struct UploadOvpnView: View {
     
     var body: some View {
         VStack {
-            TextField("Username", text: $username).padding().autocapitalization(.none)
-            SecureField("Password", text: $password).padding()
+            TextField("Username", text: $username)
+                .padding().autocapitalization(.none).textFieldStyle(RoundedBorderTextFieldStyle())
+            SecureField("Password", text: $password)
+                .padding().textFieldStyle(RoundedBorderTextFieldStyle())
             
             if (username.count > 0 && password.count > 0)
             {
@@ -29,7 +32,7 @@ struct UploadOvpnView: View {
                     isShowingOvpnPicker = true
                 }.sheet(isPresented: $isShowingOvpnPicker) {
                     OvpnDocumentPickerView(onPick: self.sendData)
-                }
+                }.textFieldStyle(RoundedBorderTextFieldStyle())
             }
         }
     }
@@ -37,5 +40,6 @@ struct UploadOvpnView: View {
     private func sendData(content : String)
     {
         self.actionsViewModel.uploadOvpnProfile(profile: content, username: self.username, password: self.password)
+        self.presentationMode.wrappedValue.dismiss()
     }
 }

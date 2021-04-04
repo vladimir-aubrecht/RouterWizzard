@@ -107,14 +107,12 @@ public class UbiquitiActionsClient {
     public func uploadOvpnFile(content : String, username : String, password : String) throws {
         let hostname = try! parseHostname(content: content)
         let ovpnProfileFilename = filenamePrefix + hostname
-        let profileFullPath = vpnConfigPath + ovpnProfileFilename
+        let profileFullPath = vpnConfigPath + ovpnProfileFilename + ".ovpn"
         let authFullPath = vpnConfigPath + ovpnProfileFilename + ".auth"
 
         let authContent = username + "\n" + password
         var profileContent = try! replaceHeader(content: content, header: "auth-user-pass", value: authFullPath)
         profileContent = try! replaceHeader(content: profileContent, header: "route-nopull", value: "")
-        
-        print(profileContent)
         
         try self.fileSystemClient.uploadFile(path: profileFullPath, content: profileContent)
         try self.fileSystemClient.uploadFile(path: authFullPath, content: authContent)

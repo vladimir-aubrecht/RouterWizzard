@@ -19,6 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+        runScene(scene)
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -42,6 +43,32 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Called as the scene transitions from the background to the foreground.
         // Use this method to undo the changes made on entering the background.
         
+        if (self.sshClient == nil)
+        {
+            runScene(scene)
+        }
+        else
+        {
+            let userDefaults = UserDefaults.standard
+            let password = userDefaults.string(forKey: "password_preference") ?? ""
+            
+            if password != ""
+            {
+                try? self.sshClient!.connect()
+                try? self.sshClient!.authenticate(password: password)
+            }
+        }
+    }
+
+    func sceneDidEnterBackground(_ scene: UIScene) {
+        // Called as the scene transitions from the foreground to the background.
+        // Use this method to save data, release shared resources, and store enough scene-specific state information
+        // to restore the scene back to its current state.
+        
+        self.sshClient?.disconnect()
+    }
+
+    private func runScene(_ scene: UIScene) {
         let userDefaults = UserDefaults.standard
         let hostname = userDefaults.string(forKey: "hostname_preference") ?? ""
         let username = userDefaults.string(forKey: "username_preference") ?? ""
@@ -54,15 +81,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             self.setWindowController(scene, hostingController: UIHostingController(rootView: FirstStartupView()))
         }
     }
-
-    func sceneDidEnterBackground(_ scene: UIScene) {
-        // Called as the scene transitions from the foreground to the background.
-        // Use this method to save data, release shared resources, and store enough scene-specific state information
-        // to restore the scene back to its current state.
-        
-        self.sshClient?.disconnect()
-    }
-
+    
     private func initView(_ scene: UIScene, hostname: String, username: String, password: String)
     {
         self.sshClient = SshClient(hostname: hostname, username: username)
