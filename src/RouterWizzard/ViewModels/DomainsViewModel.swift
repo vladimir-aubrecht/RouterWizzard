@@ -24,7 +24,6 @@ class DomainsViewModel : ObservableObject {
     
     func refreshDomains() {
         let domains = (try? self.domainFlowClient.fetchDomains()) ?? [String]()
-        //let domains = [String]()
         self.domainModels = [String: DomainModel]()
 
         domains.forEach { domain in

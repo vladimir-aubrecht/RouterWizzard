@@ -95,14 +95,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let ubiquitiDomainFlowClient = UbiquitiDomainFlowClient(ubiquitiClient: ubiquitiClient)
             let ubiquitiActionsClient = UbiquitiActionsClient(ubiquitiClient: ubiquitiClient, fileSystemClient: filesystemClient, ubiquitiDeserializer: UbiquitiDeserializer())
             let favIconProvider = FavIconProvider()
+            let servicesClient = ServicesClient()
             
             let domainListViewModel = DomainsViewModel(domainFlowClient: ubiquitiDomainFlowClient, favIconProvider: favIconProvider)
             let actionsViewModel = ActionsViewModel(actionsClient: ubiquitiActionsClient)
             
-            let domainListView = MainTabView(domainListViewModel: domainListViewModel, actionsViewModel: actionsViewModel)
-            
+            let mainTabView = MainTabView(domainListViewModel: domainListViewModel, actionsViewModel: actionsViewModel, servicesClient: servicesClient)
 
-            self.setWindowController(scene, hostingController: UIHostingController(rootView: domainListView))
+            self.setWindowController(scene, hostingController: UIHostingController(rootView: mainTabView))
             
         } catch {
             self.setWindowController(scene, hostingController: UIHostingController(rootView: FirstStartupView()))

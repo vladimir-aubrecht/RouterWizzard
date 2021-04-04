@@ -11,6 +11,9 @@
 		9A61B55A2591525B0024BFCD /* ManageRouteHops.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A61B5592591525B0024BFCD /* ManageRouteHops.swift */; };
 		9A61B55D259154220024BFCD /* HopTableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A61B55C259154220024BFCD /* HopTableModel.swift */; };
 		9A61B56025915F790024BFCD /* AddHopTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A61B55F25915F790024BFCD /* AddHopTable.swift */; };
+		9A75D6C3261A2DD4007CFF96 /* ServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A75D6C2261A2DD4007CFF96 /* ServiceView.swift */; };
+		9A75D6C7261A3007007CFF96 /* ServicesClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A75D6C6261A3007007CFF96 /* ServicesClient.swift */; };
+		9A75D6CE261A32FA007CFF96 /* ServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A75D6CD261A32FA007CFF96 /* ServiceModel.swift */; };
 		9A7C15F525720336000BBC4F /* OvpnError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7C15F425720336000BBC4F /* OvpnError.swift */; };
 		9A7C15F925720572000BBC4F /* UploadOvpnProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7C15F825720572000BBC4F /* UploadOvpnProfileView.swift */; };
 		9A7C15FC2572D3D1000BBC4F /* ActionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7C15FB2572D3D1000BBC4F /* ActionsView.swift */; };
@@ -49,6 +52,9 @@
 		9A61B5592591525B0024BFCD /* ManageRouteHops.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageRouteHops.swift; sourceTree = "<group>"; };
 		9A61B55C259154220024BFCD /* HopTableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HopTableModel.swift; sourceTree = "<group>"; };
 		9A61B55F25915F790024BFCD /* AddHopTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHopTable.swift; sourceTree = "<group>"; };
+		9A75D6C2261A2DD4007CFF96 /* ServiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceView.swift; sourceTree = "<group>"; };
+		9A75D6C6261A3007007CFF96 /* ServicesClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesClient.swift; sourceTree = "<group>"; };
+		9A75D6CD261A32FA007CFF96 /* ServiceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceModel.swift; sourceTree = "<group>"; };
 		9A7C15F425720336000BBC4F /* OvpnError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OvpnError.swift; sourceTree = "<group>"; };
 		9A7C15F825720572000BBC4F /* UploadOvpnProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadOvpnProfileView.swift; sourceTree = "<group>"; };
 		9A7C15FB2572D3D1000BBC4F /* ActionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsView.swift; sourceTree = "<group>"; };
@@ -98,11 +104,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9A75D6C5261A2EF0007CFF96 /* Http */ = {
+			isa = PBXGroup;
+			children = (
+				9A75D6CC261A32EA007CFF96 /* Models */,
+				9A75D6C6261A3007007CFF96 /* ServicesClient.swift */,
+			);
+			path = Http;
+			sourceTree = "<group>";
+		};
+		9A75D6CC261A32EA007CFF96 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9A75D6CD261A32FA007CFF96 /* ServiceModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		9A7C15FE2572D3DF000BBC4F /* Tabs */ = {
 			isa = PBXGroup;
 			children = (
 				9A7C15FB2572D3D1000BBC4F /* ActionsView.swift */,
 				9A7C16012572D5AE000BBC4F /* DomainsView.swift */,
+				9A75D6C2261A2DD4007CFF96 /* ServiceView.swift */,
 			);
 			path = Tabs;
 			sourceTree = "<group>";
@@ -167,6 +191,7 @@
 		F4A73222246428B80074922F /* Clients */ = {
 			isa = PBXGroup;
 			children = (
+				9A75D6C5261A2EF0007CFF96 /* Http */,
 				9A7C160E2572DFE0000BBC4F /* Bash */,
 				F4A73223246428E30074922F /* Ubiquiti */,
 				F4A7321C246422A50074922F /* Ssh */,
@@ -334,8 +359,10 @@
 				9A7C15FC2572D3D1000BBC4F /* ActionsView.swift in Sources */,
 				F49FCA032460AA0300ECE591 /* AddDomainView.swift in Sources */,
 				9A61B55A2591525B0024BFCD /* ManageRouteHops.swift in Sources */,
+				9A75D6CE261A32FA007CFF96 /* ServiceModel.swift in Sources */,
 				9A7C161525731B9F000BBC4F /* UbiquitiDeserializer.swift in Sources */,
 				F4A7322A24646B910074922F /* UbiquitiDomainFlowClient.swift in Sources */,
+				9A75D6C3261A2DD4007CFF96 /* ServiceView.swift in Sources */,
 				9A7C16112572E122000BBC4F /* ManageVpnView.swift in Sources */,
 				F4D1FBC924608C03006EA073 /* AppDelegate.swift in Sources */,
 				F4A73225246428FC0074922F /* UbiquitiClient.swift in Sources */,
@@ -354,6 +381,7 @@
 				9A61B56025915F790024BFCD /* AddHopTable.swift in Sources */,
 				F4D1FBCD24608C03006EA073 /* MainTabView.swift in Sources */,
 				F4A732212464263E0074922F /* SshError.swift in Sources */,
+				9A75D6C7261A3007007CFF96 /* ServicesClient.swift in Sources */,
 				9A7C16212573EC84000BBC4F /* AddVpnInterfaceView.swift in Sources */,
 				9A7C15F525720336000BBC4F /* OvpnError.swift in Sources */,
 				9ADD01052571F14D002E4369 /* ActionsViewModel.swift in Sources */,
