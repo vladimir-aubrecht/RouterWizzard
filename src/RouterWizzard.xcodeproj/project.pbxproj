@@ -13,7 +13,10 @@
 		9A61B56025915F790024BFCD /* AddHopTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A61B55F25915F790024BFCD /* AddHopTable.swift */; };
 		9A75D6C3261A2DD4007CFF96 /* ServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A75D6C2261A2DD4007CFF96 /* ServiceView.swift */; };
 		9A75D6C7261A3007007CFF96 /* ServicesClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A75D6C6261A3007007CFF96 /* ServicesClient.swift */; };
-		9A75D6CE261A32FA007CFF96 /* ServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A75D6CD261A32FA007CFF96 /* ServiceModel.swift */; };
+		9A75D6CE261A32FA007CFF96 /* ServicesClientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A75D6CD261A32FA007CFF96 /* ServicesClientModel.swift */; };
+		9A75D6D7261B620C007CFF96 /* ServicesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A75D6D6261B620C007CFF96 /* ServicesViewModel.swift */; };
+		9A75D6DB261B6715007CFF96 /* ServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A75D6DA261B6715007CFF96 /* ServiceModel.swift */; };
+		9A75D6DF261B76D5007CFF96 /* ServiceUpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A75D6DE261B76D5007CFF96 /* ServiceUpdateView.swift */; };
 		9A7C15F525720336000BBC4F /* OvpnError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7C15F425720336000BBC4F /* OvpnError.swift */; };
 		9A7C15F925720572000BBC4F /* UploadOvpnProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7C15F825720572000BBC4F /* UploadOvpnProfileView.swift */; };
 		9A7C15FC2572D3D1000BBC4F /* ActionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7C15FB2572D3D1000BBC4F /* ActionsView.swift */; };
@@ -54,7 +57,10 @@
 		9A61B55F25915F790024BFCD /* AddHopTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHopTable.swift; sourceTree = "<group>"; };
 		9A75D6C2261A2DD4007CFF96 /* ServiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceView.swift; sourceTree = "<group>"; };
 		9A75D6C6261A3007007CFF96 /* ServicesClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesClient.swift; sourceTree = "<group>"; };
-		9A75D6CD261A32FA007CFF96 /* ServiceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceModel.swift; sourceTree = "<group>"; };
+		9A75D6CD261A32FA007CFF96 /* ServicesClientModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesClientModel.swift; sourceTree = "<group>"; };
+		9A75D6D6261B620C007CFF96 /* ServicesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesViewModel.swift; sourceTree = "<group>"; };
+		9A75D6DA261B6715007CFF96 /* ServiceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceModel.swift; sourceTree = "<group>"; };
+		9A75D6DE261B76D5007CFF96 /* ServiceUpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceUpdateView.swift; sourceTree = "<group>"; };
 		9A7C15F425720336000BBC4F /* OvpnError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OvpnError.swift; sourceTree = "<group>"; };
 		9A7C15F825720572000BBC4F /* UploadOvpnProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadOvpnProfileView.swift; sourceTree = "<group>"; };
 		9A7C15FB2572D3D1000BBC4F /* ActionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsView.swift; sourceTree = "<group>"; };
@@ -116,7 +122,7 @@
 		9A75D6CC261A32EA007CFF96 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				9A75D6CD261A32FA007CFF96 /* ServiceModel.swift */,
+				9A75D6CD261A32FA007CFF96 /* ServicesClientModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -140,6 +146,7 @@
 				9A7C16202573EC84000BBC4F /* AddVpnInterfaceView.swift */,
 				9A61B5592591525B0024BFCD /* ManageRouteHops.swift */,
 				9A61B55F25915F790024BFCD /* AddHopTable.swift */,
+				9A75D6DE261B76D5007CFF96 /* ServiceUpdateView.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -217,6 +224,7 @@
 			children = (
 				F4A7322C2464B38D0074922F /* DomainsViewModel.swift */,
 				9ADD01042571F14D002E4369 /* ActionsViewModel.swift */,
+				9A75D6D6261B620C007CFF96 /* ServicesViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -273,6 +281,7 @@
 			isa = PBXGroup;
 			children = (
 				F4FE115C2466FE2E004791F8 /* DomainModel.swift */,
+				9A75D6DA261B6715007CFF96 /* ServiceModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -358,8 +367,9 @@
 			files = (
 				9A7C15FC2572D3D1000BBC4F /* ActionsView.swift in Sources */,
 				F49FCA032460AA0300ECE591 /* AddDomainView.swift in Sources */,
+				9A75D6D7261B620C007CFF96 /* ServicesViewModel.swift in Sources */,
 				9A61B55A2591525B0024BFCD /* ManageRouteHops.swift in Sources */,
-				9A75D6CE261A32FA007CFF96 /* ServiceModel.swift in Sources */,
+				9A75D6CE261A32FA007CFF96 /* ServicesClientModel.swift in Sources */,
 				9A7C161525731B9F000BBC4F /* UbiquitiDeserializer.swift in Sources */,
 				F4A7322A24646B910074922F /* UbiquitiDomainFlowClient.swift in Sources */,
 				9A75D6C3261A2DD4007CFF96 /* ServiceView.swift in Sources */,
@@ -371,6 +381,7 @@
 				9A61B55D259154220024BFCD /* HopTableModel.swift in Sources */,
 				F4A7322D2464B38D0074922F /* DomainsViewModel.swift in Sources */,
 				F4D1FBDE2460933C006EA073 /* DomainRowView.swift in Sources */,
+				9A75D6DB261B6715007CFF96 /* ServiceModel.swift in Sources */,
 				9ADD01022571DB3D002E4369 /* OvpnDocumentPickerView.swift in Sources */,
 				9A7C15F925720572000BBC4F /* UploadOvpnProfileView.swift in Sources */,
 				F4FE115D2466FE2E004791F8 /* DomainModel.swift in Sources */,
@@ -387,6 +398,7 @@
 				9ADD01052571F14D002E4369 /* ActionsViewModel.swift in Sources */,
 				9A4838AA249D8B7A0019546C /* FavIconProvider.swift in Sources */,
 				9ADD01092571F3EA002E4369 /* FileSystemClient.swift in Sources */,
+				9A75D6DF261B76D5007CFF96 /* ServiceUpdateView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

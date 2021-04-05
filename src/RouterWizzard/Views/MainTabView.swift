@@ -10,20 +10,21 @@ import SwiftUI
 import SwiftUIRefresh
 
 struct MainTabView: View {
-    @ObservedObject var domainListViewModel: DomainsViewModel
-    @ObservedObject var actionsViewModel: ActionsViewModel
-    var servicesClient: ServicesClient
+    var domainListViewModel: DomainsViewModel
+    var actionsViewModel: ActionsViewModel
+    var servicesViewModel: ServicesViewModel
+    
     @State private var isShowing = false
     
-    init(domainListViewModel: DomainsViewModel, actionsViewModel: ActionsViewModel, servicesClient: ServicesClient) {
+    init(domainListViewModel: DomainsViewModel, actionsViewModel: ActionsViewModel, servicesViewModel: ServicesViewModel) {
         self.domainListViewModel = domainListViewModel
         self.actionsViewModel = actionsViewModel
-        self.servicesClient = servicesClient
+        self.servicesViewModel = servicesViewModel
     }
     
     var body: some View {
         TabView {
-            ServiceView(servicesClient: self.servicesClient)
+            ServiceView(servicesViewModel: self.servicesViewModel)
                 .tabItem {
                     Image(systemName: "house.fill")
                     Text("Services")

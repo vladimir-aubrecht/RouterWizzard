@@ -99,8 +99,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             
             let domainListViewModel = DomainsViewModel(domainFlowClient: ubiquitiDomainFlowClient, favIconProvider: favIconProvider)
             let actionsViewModel = ActionsViewModel(actionsClient: ubiquitiActionsClient)
+            let servicesViewModel = ServicesViewModel(servicesClient: servicesClient)
             
-            let mainTabView = MainTabView(domainListViewModel: domainListViewModel, actionsViewModel: actionsViewModel, servicesClient: servicesClient)
+            let mainTabView = MainTabView(domainListViewModel: domainListViewModel, actionsViewModel: actionsViewModel, servicesViewModel: servicesViewModel)
 
             self.setWindowController(scene, hostingController: UIHostingController(rootView: mainTabView))
             

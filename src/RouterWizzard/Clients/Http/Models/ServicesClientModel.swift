@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct ServiceModel : Decodable {
+public struct ServicesClientModel : Decodable {
     public var serviceName: String
     public var iconUrl: String
     public var domains: [String]
