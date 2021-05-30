@@ -25,7 +25,6 @@ public class ServicesProvider
         let image = UIImage(data: icon)!
         
         onResponse(ServiceProviderModel(name: service.name, image: image, domains: service.domains))
-        print("Download icon.")
     }
     
     private func parseServices(services: Data, onResponse: @escaping (ServiceProviderModel) -> Void) {

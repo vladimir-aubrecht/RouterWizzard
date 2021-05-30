@@ -9,6 +9,7 @@ import Foundation
 
 class ServiceModelView : ObservableObject {
     private var servicesProvider = ServicesProvider()
+    private var routerProvider = UbiquitiProvider()
     @Published private var services:[ServiceModel] = [ServiceModel]()
     
     init() {
@@ -20,9 +21,11 @@ class ServiceModelView : ObservableObject {
     }
     
     private func addService(serviceProviderModel: ServiceProviderModel) {
+        
+        let routerModel = self.routerProvider.fetchFirewallStatus(serviceName: serviceProviderModel.name)
+        
         DispatchQueue.main.async {
-            print("Appending service model.")
-            self.services.append(ServiceModel(name: serviceProviderModel.name, image: serviceProviderModel.image, domains: serviceProviderModel.domains, location: "UK", status: "InActive"))
+            self.services.append(ServiceModel(name: serviceProviderModel.name, image: serviceProviderModel.image, domains: serviceProviderModel.domains, location: routerModel.location, status: routerModel.status))
         }
     }
 }

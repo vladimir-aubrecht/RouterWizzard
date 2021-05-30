@@ -26,7 +26,7 @@ struct ServiceView: View {
                 NavigationView {
                     List {
                         ForEach(services, id: \.name) { service in
-                            NavigationLink(destination: EmptyView()) {
+                            NavigationLink(destination: EditServiceView(serviceModel: service, editServiceModelView: EditServiceModelView())) {
                                 HStack(alignment: .top) {
                                     Image(uiImage: service.image).resizable().aspectRatio(contentMode: .fit).scaledToFit().frame(maxWidth: 150, maxHeight: 150)
                                     VStack(alignment: .leading) {
