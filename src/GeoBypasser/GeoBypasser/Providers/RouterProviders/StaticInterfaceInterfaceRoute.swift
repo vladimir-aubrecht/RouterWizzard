@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct StaticRouteModel {
+struct StaticInterfaceRouteModel {
     public var destinationIp:String
-    public var nextHop:String
+    public var nextHopInterface:String
 }

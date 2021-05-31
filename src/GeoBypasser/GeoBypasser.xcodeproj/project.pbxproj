@@ -24,6 +24,10 @@
 		6EE5BFCA26642D6700AAEA53 /* EditServiceModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE5BFC926642D6700AAEA53 /* EditServiceModelView.swift */; };
 		6EE5BFCC2664316800AAEA53 /* StaticRouteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE5BFCB2664316800AAEA53 /* StaticRouteModel.swift */; };
 		6EE5BFCE2664319800AAEA53 /* VpnInterfaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE5BFCD2664319800AAEA53 /* VpnInterfaceModel.swift */; };
+		6EE5BFD0266564E000AAEA53 /* StaticInterfaceInterfaceRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE5BFCF266564E000AAEA53 /* StaticInterfaceInterfaceRoute.swift */; };
+		6EE5BFD4266569A900AAEA53 /* VpnConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE5BFD3266569A900AAEA53 /* VpnConnection.swift */; };
+		6EE5BFD626656DCB00AAEA53 /* DhcpConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE5BFD526656DCB00AAEA53 /* DhcpConfiguration.swift */; };
+		6EE5BFD826656F0600AAEA53 /* InterfaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE5BFD726656F0600AAEA53 /* InterfaceModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +50,10 @@
 		6EE5BFC926642D6700AAEA53 /* EditServiceModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditServiceModelView.swift; sourceTree = "<group>"; };
 		6EE5BFCB2664316800AAEA53 /* StaticRouteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticRouteModel.swift; sourceTree = "<group>"; };
 		6EE5BFCD2664319800AAEA53 /* VpnInterfaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VpnInterfaceModel.swift; sourceTree = "<group>"; };
+		6EE5BFCF266564E000AAEA53 /* StaticInterfaceInterfaceRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticInterfaceInterfaceRoute.swift; sourceTree = "<group>"; };
+		6EE5BFD3266569A900AAEA53 /* VpnConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VpnConnection.swift; sourceTree = "<group>"; };
+		6EE5BFD526656DCB00AAEA53 /* DhcpConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DhcpConfiguration.swift; sourceTree = "<group>"; };
+		6EE5BFD726656F0600AAEA53 /* InterfaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +160,10 @@
 				6EE5BFC526642B6600AAEA53 /* RouterStatusModel.swift */,
 				6EE5BFCD2664319800AAEA53 /* VpnInterfaceModel.swift */,
 				6EE5BFCB2664316800AAEA53 /* StaticRouteModel.swift */,
+				6EE5BFCF266564E000AAEA53 /* StaticInterfaceInterfaceRoute.swift */,
+				6EE5BFD3266569A900AAEA53 /* VpnConnection.swift */,
+				6EE5BFD526656DCB00AAEA53 /* DhcpConfiguration.swift */,
+				6EE5BFD726656F0600AAEA53 /* InterfaceModel.swift */,
 			);
 			path = RouterProviders;
 			sourceTree = "<group>";
@@ -234,16 +246,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				6EE5BFC426642A8C00AAEA53 /* UbiquitiProvider.swift in Sources */,
+				6EE5BFD626656DCB00AAEA53 /* DhcpConfiguration.swift in Sources */,
 				6EE5BFA026640DF700AAEA53 /* ContentView.swift in Sources */,
 				6EE5BFC826642C5600AAEA53 /* EditServiceView.swift in Sources */,
 				6EE5BFCE2664319800AAEA53 /* VpnInterfaceModel.swift in Sources */,
 				6EE5BFC026641E4100AAEA53 /* ServiceModel.swift in Sources */,
 				6EE5BFB32664117700AAEA53 /* EmptyView.swift in Sources */,
 				6EE5BFCC2664316800AAEA53 /* StaticRouteModel.swift in Sources */,
+				6EE5BFD0266564E000AAEA53 /* StaticInterfaceInterfaceRoute.swift in Sources */,
 				6EE5BFCA26642D6700AAEA53 /* EditServiceModelView.swift in Sources */,
 				6EE5BFB12664109600AAEA53 /* ServicesProviderAPIModel.swift in Sources */,
+				6EE5BFD826656F0600AAEA53 /* InterfaceModel.swift in Sources */,
 				6EE5BFAE26640FBC00AAEA53 /* ServiceView.swift in Sources */,
 				6EE5BFB92664152700AAEA53 /* ServiceProviderModel.swift in Sources */,
+				6EE5BFD4266569A900AAEA53 /* VpnConnection.swift in Sources */,
 				6EE5BFB6266413EC00AAEA53 /* ServicesProvider.swift in Sources */,
 				6EE5BFBE26641BAF00AAEA53 /* ServiceModelView.swift in Sources */,
 				6EE5BFC626642B6600AAEA53 /* RouterStatusModel.swift in Sources */,
