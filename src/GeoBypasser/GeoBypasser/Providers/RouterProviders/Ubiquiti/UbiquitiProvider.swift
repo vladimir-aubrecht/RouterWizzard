@@ -29,7 +29,7 @@ class UbiquitiProvider {
     }
     
     public func fetchTableIndexByInterface(interfaceName: String) -> Int {
-        
+        return 0
     }
     
     public func fetchStaticRoutes(tableIndex:Int) -> [StaticRouteModel] {
@@ -54,8 +54,17 @@ class UbiquitiProvider {
     public func addVpnInterface(vpnProfileFilename: String) {
 
     }
+
+    public func addDnsIpSetForwarding(domains: [String], serviceName: String) {
+    }
     
-    public func addFirewallRule(addressGroup: String, description: String, tableIndex: Int) {
+    public func addDnsServerForwarding(domains: [String], dnsServerIp: String) {
+    }
+    
+    public func addFirewallRule(description: String, tableIndex: Int, ruleIndex: Int) {
+    }
+    
+    public func addFirewallAddressGroupRule(addressGroup: String, description: String, tableIndex: Int, ruleIndex: Int) {
     }
     
     public func addNAT(vpnInterfaceName: String) {
@@ -74,5 +83,14 @@ class UbiquitiProvider {
     
     public func deleteAllStaticRoutingRecords() {
         
+    }
+    
+    public func deleteFirewallRule(ruleIndex: Int) {
+    }
+    
+    public func deleteDnsIpSetForwarding(serviceName: String) {
+    }
+    
+    public func deleteDnsServerForwarding(domains: [String], dnsServerIp: String) {
     }
 }

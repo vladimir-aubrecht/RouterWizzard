@@ -15,7 +15,7 @@ struct EditServiceView: View {
         Spacer()
         
         Button(action: {
-                                                
+            editServiceModelView.Activate(serviceModel: serviceModel)
         }){
             Text("Activate")
         }

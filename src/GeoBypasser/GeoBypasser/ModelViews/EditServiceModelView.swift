@@ -10,18 +10,40 @@ import Foundation
 class EditServiceModelView {
     private var routerProvider = UbiquitiProvider()
     
-    public func Activate() {
+    public func Activate(serviceModel: ServiceModel) {
         setDnsRedirectsStaticRoutes()
         setDefaultGatewayForEachInterface()
         enableFirewallOnLocalPort()
+        redirectServiceThroughLocation(serviceModel: serviceModel)
+        redirectRestOfTraffic()
+        addDomainForwarding(serviceModel: serviceModel)
     }
     
-    private func redirectServiceThroughLocation(serviceName: String, location: String) {
-        let vpnInterface = routerProvider.fetchVpnInterfaces().filter { $0.description == location }[0]
+    private func addDomainForwarding(serviceModel: ServiceModel) {
+        let vpnInterface = routerProvider.fetchVpnInterfaces().filter { $0.description == serviceModel.location }[0]
+        let connectionInfo = routerProvider.fetchVpnConnection(vpnInterface: vpnInterface.name)
+        
+        routerProvider.deleteDnsIpSetForwarding(serviceName: serviceModel.name)
+        routerProvider.deleteDnsServerForwarding(domains: serviceModel.domains, dnsServerIp: connectionInfo.dnsServerIp)
+        routerProvider.addDnsIpSetForwarding(domains: serviceModel.domains, serviceName: serviceModel.name)
+        routerProvider.addDnsServerForwarding(domains: serviceModel.domains, dnsServerIp: connectionInfo.dnsServerIp)
+    }
+    
+    private func redirectRestOfTraffic() {
+        let vpnInterfacesCount = routerProvider.fetchVpnInterfaces().count
+        let ruleIndex = vpnInterfacesCount * 10
+        routerProvider.deleteFirewallRule(ruleIndex: ruleIndex)
+        routerProvider.addFirewallRule(description: "Rest of traffic", tableIndex: 0, ruleIndex: ruleIndex)
+    }
+    
+    private func redirectServiceThroughLocation(serviceModel: ServiceModel) {
+        let vpnInterface = routerProvider.fetchVpnInterfaces().filter { $0.description == serviceModel.location }[0]
         let tableIndex = routerProvider.fetchTableIndexByInterface(interfaceName: vpnInterface.name)
-        routerProvider.addFirewallRule(addressGroup: serviceName, description: serviceName, tableIndex: tableIndex)
+        let ruleIndex = tableIndex * 10
+        routerProvider.deleteFirewallRule(ruleIndex: ruleIndex)
+        routerProvider.addFirewallAddressGroupRule(addressGroup: serviceModel.name, description: serviceModel.name, tableIndex: tableIndex, ruleIndex: ruleIndex)
     }
-    
+        
     private func enableFirewallOnLocalPort() {
         let dhcpConfiguration = routerProvider.fetchDhcpConfiguration()
         let localInterface = routerProvider.fetchLocalInterfaces().filter { $0.ip == dhcpConfiguration.defaultRouter }[0]
