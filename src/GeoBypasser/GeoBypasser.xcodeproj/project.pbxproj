@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E14F6FB267EBFD500828B8A /* NMSSH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E14F6FA267EBFD500828B8A /* NMSSH.framework */; };
 		6EE5BF9E26640DF700AAEA53 /* GeoBypasserApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE5BF9D26640DF700AAEA53 /* GeoBypasserApp.swift */; };
 		6EE5BFA026640DF700AAEA53 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE5BF9F26640DF700AAEA53 /* ContentView.swift */; };
 		6EE5BFA226640DF900AAEA53 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6EE5BFA126640DF900AAEA53 /* Assets.xcassets */; };
@@ -28,10 +29,10 @@
 		6EE5BFD4266569A900AAEA53 /* VpnConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE5BFD3266569A900AAEA53 /* VpnConnection.swift */; };
 		6EE5BFD626656DCB00AAEA53 /* DhcpConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE5BFD526656DCB00AAEA53 /* DhcpConfiguration.swift */; };
 		6EE5BFD826656F0600AAEA53 /* InterfaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE5BFD726656F0600AAEA53 /* InterfaceModel.swift */; };
-		6EF36407266C38FE0064A998 /* Shout in Frameworks */ = {isa = PBXBuildFile; productRef = 6EF36406266C38FE0064A998 /* Shout */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6E14F6FA267EBFD500828B8A /* NMSSH.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NMSSH.framework; path = ../Frameworks/NMSSH.framework; sourceTree = "<group>"; };
 		6EE5BF9A26640DF700AAEA53 /* GeoBypasser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoBypasser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EE5BF9D26640DF700AAEA53 /* GeoBypasserApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoBypasserApp.swift; sourceTree = "<group>"; };
 		6EE5BF9F26640DF700AAEA53 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -62,18 +63,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6EF36407266C38FE0064A998 /* Shout in Frameworks */,
+				6E14F6FB267EBFD500828B8A /* NMSSH.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6E14F6F9267EBFD500828B8A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6E14F6FA267EBFD500828B8A /* NMSSH.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		6EE5BF9126640DF700AAEA53 = {
 			isa = PBXGroup;
 			children = (
 				6EE5BF9C26640DF700AAEA53 /* GeoBypasser */,
 				6EE5BF9B26640DF700AAEA53 /* Products */,
+				6E14F6F9267EBFD500828B8A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -195,7 +205,6 @@
 			);
 			name = GeoBypasser;
 			packageProductDependencies = (
-				6EF36406266C38FE0064A998 /* Shout */,
 			);
 			productName = GeoBypasser;
 			productReference = 6EE5BF9A26640DF700AAEA53 /* GeoBypasser.app */;
@@ -225,7 +234,6 @@
 			);
 			mainGroup = 6EE5BF9126640DF700AAEA53;
 			packageReferences = (
-				6EF36405266C38FE0064A998 /* XCRemoteSwiftPackageReference "Shout" */,
 			);
 			productRefGroup = 6EE5BF9B26640DF700AAEA53 /* Products */;
 			projectDirPath = "";
@@ -315,6 +323,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -380,6 +389,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -409,7 +419,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"GeoBypasser/Preview Content\"";
+				DEVELOPMENT_TEAM = SN9DM2UY8Q;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = "/Users/vlaub/Projects/GitHub/RouterWizzard/src/Frameworks/**";
 				INFOPLIST_FILE = GeoBypasser/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -430,7 +442,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"GeoBypasser/Preview Content\"";
+				DEVELOPMENT_TEAM = SN9DM2UY8Q;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = "/Users/vlaub/Projects/GitHub/RouterWizzard/src/Frameworks/**";
 				INFOPLIST_FILE = GeoBypasser/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -466,25 +480,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		6EF36405266C38FE0064A998 /* XCRemoteSwiftPackageReference "Shout" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/jakeheis/Shout";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		6EF36406266C38FE0064A998 /* Shout */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6EF36405266C38FE0064A998 /* XCRemoteSwiftPackageReference "Shout" */;
-			productName = Shout;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6EE5BF9226640DF700AAEA53 /* Project object */;
 }
