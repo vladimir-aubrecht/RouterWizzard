@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import Logging
 
 struct ContentView: View {
     @ObservedObject var settingsModel = SettingsModel()
+    let logger = Logger(label: "com.vladimir-aubrecht.GeoBypasser.main")
     
     var body: some View {
         TabView {
@@ -27,12 +29,14 @@ struct ContentView: View {
     }
     
     private func createRouterProvider() -> RouterProvider {
+        logger.info("Logging to: \(settingsModel.hostname!) by username: \(settingsModel.username!) with password: \(settingsModel.password!)")
+        
         let sshClient = SshClient(hostname: settingsModel.hostname!, username: settingsModel.username!)
         try! sshClient.connect()
         try! sshClient.authenticate(password: settingsModel.password!)
         let ubiquitiClient = UbiquitiClient(sshClient: sshClient)
         
-        return UbiquitiProvider(ubiquitiClient: ubiquitiClient)
+        return UbiquitiProvider(ubiquitiClient: ubiquitiClient, logger: logger)
     }
 }
 

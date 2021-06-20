@@ -24,13 +24,17 @@ class EditServiceModelView {
     }
     
     private func addDomainForwarding(serviceModel: ServiceModel) {
-        let vpnInterface = routerProvider.fetchVpnInterfaces().filter { $0.description == serviceModel.location }[0]
-        let connectionInfo = routerProvider.fetchVpnConnection(vpnInterface: vpnInterface.name)
+        let vpnInterfaces = routerProvider.fetchVpnInterfaces().filter { $0.description == serviceModel.location }
         
-        routerProvider.deleteDnsIpSetForwarding(serviceName: serviceModel.name)
-        routerProvider.deleteDnsServerForwarding(domains: serviceModel.domains, dnsServerIp: connectionInfo.dnsServerIp)
-        routerProvider.addDnsIpSetForwarding(domains: serviceModel.domains, serviceName: serviceModel.name)
-        routerProvider.addDnsServerForwarding(domains: serviceModel.domains, dnsServerIp: connectionInfo.dnsServerIp)
+        if vpnInterfaces.count > 0 {
+            let vpnInterface = vpnInterfaces[0]
+            let connectionInfo = routerProvider.fetchVpnConnection(vpnInterface: vpnInterface.name)
+            
+            routerProvider.deleteDnsIpSetForwarding(serviceName: serviceModel.name)
+            routerProvider.deleteDnsServerForwarding(domains: serviceModel.domains, dnsServerIp: connectionInfo.dnsServerIp)
+            routerProvider.addDnsIpSetForwarding(domains: serviceModel.domains, serviceName: serviceModel.name)
+            routerProvider.addDnsServerForwarding(domains: serviceModel.domains, dnsServerIp: connectionInfo.dnsServerIp)
+        }
     }
     
     private func redirectRestOfTraffic() {
@@ -41,18 +45,25 @@ class EditServiceModelView {
     }
     
     private func redirectServiceThroughLocation(serviceModel: ServiceModel) {
-        let vpnInterface = routerProvider.fetchVpnInterfaces().filter { $0.description == serviceModel.location }[0]
-        let tableIndex = routerProvider.fetchTableIndexByInterface(interfaceName: vpnInterface.name)
-        let ruleIndex = tableIndex * 10
-        routerProvider.deleteFirewallRule(ruleIndex: ruleIndex)
-        routerProvider.addFirewallAddressGroupRule(addressGroup: serviceModel.name, description: serviceModel.name, tableIndex: tableIndex, ruleIndex: ruleIndex)
+        let vpnInterfaces = routerProvider.fetchVpnInterfaces().filter { $0.description == serviceModel.location }
+        
+        if vpnInterfaces.count > 0 {
+            let vpnInterface = vpnInterfaces[0]
+            let tableIndex = routerProvider.fetchTableIndexByInterface(interfaceName: vpnInterface.name)
+            let ruleIndex = tableIndex * 10
+            routerProvider.deleteFirewallRule(ruleIndex: ruleIndex)
+            routerProvider.addFirewallAddressGroupRule(addressGroup: serviceModel.name, description: serviceModel.name, tableIndex: tableIndex, ruleIndex: ruleIndex)
+        }
     }
         
     private func enableFirewallOnLocalPort() {
         let dhcpConfiguration = routerProvider.fetchDhcpConfiguration()
-        let localInterface = routerProvider.fetchLocalInterfaces().filter { $0.ip == dhcpConfiguration.defaultRouter }[0]
+        let localInterfaces = routerProvider.fetchLocalInterfaces().filter { $0.ip == dhcpConfiguration.defaultRouter }
         
-        routerProvider.setVpnRuleOnPort(port: localInterface.name, vpnRule: "GeoBypasser")
+        if localInterfaces.count > 0 {
+            let localInterface = localInterfaces[0]
+            routerProvider.setVpnRuleOnPort(port: localInterface.name, vpnRule: "GeoBypasser")
+        }
     }
     
     private func setDnsRedirectsStaticRoutes() {
@@ -68,8 +79,11 @@ class EditServiceModelView {
         
         routerProvider.deleteAllStaticRoutingRecords()
         routerProvider.addStaticDefaultGateway(tableIndex: 0, ip: defaultGateway)
-        for i in 0...vpnInterfaces.count - 1 {
-            routerProvider.addStaticDefaultGatewayByInterface(tableIndex: i + 1, vpnInterfaceName: vpnInterfaces[i].name)
+        
+        if vpnInterfaces.count > 0 {
+            for i in 0...vpnInterfaces.count - 1 {
+                routerProvider.addStaticDefaultGatewayByInterface(tableIndex: i + 1, vpnInterfaceName: vpnInterfaces[i].name)
+            }
         }
     }
 }

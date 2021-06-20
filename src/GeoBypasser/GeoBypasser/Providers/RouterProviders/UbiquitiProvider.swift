@@ -5,11 +5,15 @@
 //  Created by Vladimir Aubrecht on 30.05.2021.
 //
 
+import Logging
+
 class UbiquitiProvider : RouterProvider {
     private let ubiquitiClient : UbiquitiClient
+    private let logger : Logger
     
-    public init(ubiquitiClient: UbiquitiClient) {
+    public init(ubiquitiClient: UbiquitiClient, logger: Logger) {
         self.ubiquitiClient = ubiquitiClient
+        self.logger = logger
     }
     
     public func fetchFirewallStatus(serviceName:String) -> RouterStatusModel {
@@ -31,6 +35,7 @@ class UbiquitiProvider : RouterProvider {
     }
     
     public func fetchVpnInterfaces() -> [VpnInterfaceModel] {
+        self.logger.info("FetchVpnInterfaces called.")
         return [VpnInterfaceModel]()
     }
     

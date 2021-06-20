@@ -16,7 +16,7 @@ class SettingsModel: ObservableObject {
     
     @Published var password: String? {
         didSet {
-            UserDefaults.standard.set(username, forKey: "password_preference")
+            UserDefaults.standard.set(password, forKey: "password_preference")
         }
     }
     
