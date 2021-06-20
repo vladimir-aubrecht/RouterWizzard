@@ -6,16 +6,10 @@
 //
 
 class UbiquitiProvider : RouterProvider {
-    private let sshClient : SshClient
     private let ubiquitiClient : UbiquitiClient
     
-    public init(hostname: String, username: String, password: String) {
-        self.sshClient = SshClient(hostname: hostname, username: username)
-        
-        try! self.sshClient.connect()
-        try! self.sshClient.authenticate(password: password)
-        
-        self.ubiquitiClient = UbiquitiClient(sshClient: sshClient)
+    public init(ubiquitiClient: UbiquitiClient) {
+        self.ubiquitiClient = ubiquitiClient
     }
     
     public func fetchFirewallStatus(serviceName:String) -> RouterStatusModel {

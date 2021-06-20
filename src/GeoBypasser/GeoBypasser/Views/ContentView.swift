@@ -13,7 +13,7 @@ struct ContentView: View {
     var body: some View {
         TabView {
             if (settingsModel.isSet) {
-                let routerProvider = UbiquitiProvider(hostname: settingsModel.hostname!, username: settingsModel.username!, password: settingsModel.password!)
+                let routerProvider = self.createRouterProvider()
                 ServiceView(serviceModelView: ServiceModelView(routerProvider: routerProvider), editServiceModelView: EditServiceModelView(routerProvider: routerProvider))
                     .tabItem {
                         Image(systemName: "house.fill")
@@ -24,6 +24,15 @@ struct ContentView: View {
                 GoToSettingsView()
             }
         }
+    }
+    
+    private func createRouterProvider() -> RouterProvider {
+        let sshClient = SshClient(hostname: settingsModel.hostname!, username: settingsModel.username!)
+        try! sshClient.connect()
+        try! sshClient.authenticate(password: settingsModel.password!)
+        let ubiquitiClient = UbiquitiClient(sshClient: sshClient)
+        
+        return UbiquitiProvider(ubiquitiClient: ubiquitiClient)
     }
 }
 
