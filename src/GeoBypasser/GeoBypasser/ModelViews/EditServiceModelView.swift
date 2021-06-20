@@ -58,11 +58,11 @@ class EditServiceModelView {
         
     private func enableFirewallOnLocalPort() {
         let dhcpConfiguration = routerProvider.fetchDhcpConfiguration()
-        let localInterfaces = routerProvider.fetchLocalInterfaces().filter { $0.ip == dhcpConfiguration.defaultRouter }
+        let localInterfaces = routerProvider.fetchLocalInterfaces().filter { $0.value.address == dhcpConfiguration.defaultRouter }
         
         if localInterfaces.count > 0 {
-            let localInterface = localInterfaces[0]
-            routerProvider.setVpnRuleOnPort(port: localInterface.name, vpnRule: "GeoBypasser")
+            let localInterface = localInterfaces.first!
+            routerProvider.setVpnRuleOnPort(port: localInterface.key, vpnRule: "GeoBypasser")
         }
     }
     

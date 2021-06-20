@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct InterfaceModel {
-    public var name:String
-    public var ip:String
+struct InterfaceModel : Decodable {
+    public var address:String
+    public var description:String
 }

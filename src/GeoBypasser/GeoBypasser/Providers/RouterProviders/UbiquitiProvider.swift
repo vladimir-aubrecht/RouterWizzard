@@ -10,12 +10,12 @@ import Logging
 class UbiquitiProvider : RouterProvider {
     private let ubiquitiClient : UbiquitiClient
     private let logger : Logger
-    private let ubiquitiDeserializer : UbiquitiDeserializer
+    private let ubiquitiDeserializer : UbiquitiDeserializer2
     
     public init(ubiquitiClient: UbiquitiClient, logger: Logger) {
         self.ubiquitiClient = ubiquitiClient
         self.logger = logger
-        self.ubiquitiDeserializer = UbiquitiDeserializer(logger: logger)
+        self.ubiquitiDeserializer = UbiquitiDeserializer2(logger: logger)
     }
     
     public func fetchFirewallStatus(serviceName:String) -> RouterStatusModel {
@@ -32,16 +32,33 @@ class UbiquitiProvider : RouterProvider {
         return [Int]()
     }
     
-    public func fetchLocalInterfaces() -> [InterfaceModel] {
-        return [InterfaceModel]()
+    public func fetchLocalInterfaces() -> [String: InterfaceModel] {
+        self.logger.info("fetchLocalInterfaces called.")
+        let result = try! ubiquitiClient.show(key: "interfaces ethernet")
+        self.logger.info("\(result)")
+        
+        let output: [String: InterfaceModel] = try! ubiquitiDeserializer.deserialize(content: result)
+        
+        return output
     }
     
-    public func fetchVpnInterfaces() -> [String: VpnInterfaceModel] {
+    public func fetchVpnInterfaces() -> [String: InterfacesOpenVpnModel] {
         self.logger.info("FetchVpnInterfaces called.")
-        let openVpnKey = try! ubiquitiClient.show(key: "interfaces openvpn")
-        self.logger.info("\(openVpnKey)")
+        self.fetchConfiguration()
+        let result = try! ubiquitiClient.show(key: "interfaces openvpn")
+        self.logger.info("\(result)")
         
-        let output: [String: VpnInterfaceModel] = try! ubiquitiDeserializer.deserialize(content: openVpnKey)
+        let output: [String: InterfacesOpenVpnModel] = try! ubiquitiDeserializer.deserialize(content: result)
+        
+        return output
+    }
+    
+    public func fetchConfiguration() -> RootModel {
+        self.logger.info("fetchConfiguration called.")
+        let result = try! ubiquitiClient.show(key: "")
+        self.logger.info("\(result)")
+        
+        let output: RootModel = try! ubiquitiDeserializer.deserialize(content: result)
         
         return output
     }
