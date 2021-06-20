@@ -8,15 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var settingsModel = SettingsModel()
+    
     var body: some View {
         TabView {
-            let userDefaults = UserDefaults.standard
-            let hostname = userDefaults.string(forKey: "hostname_preference")
-            let username = userDefaults.string(forKey: "username_preference")
-            let password = userDefaults.string(forKey: "password_preference")
-            
-            if (hostname != nil && username != nil && password != nil) {
-                ServiceView(serviceModelView: ServiceModelView(hostname: hostname!, username: username!, password: password!))
+            if (settingsModel.isSet) {
+                let routerProvider = UbiquitiProvider(hostname: settingsModel.hostname!, username: settingsModel.username!, password: settingsModel.password!)
+                ServiceView(serviceModelView: ServiceModelView(routerProvider: routerProvider), editServiceModelView: EditServiceModelView(routerProvider: routerProvider))
                     .tabItem {
                         Image(systemName: "house.fill")
                         Text("Services")

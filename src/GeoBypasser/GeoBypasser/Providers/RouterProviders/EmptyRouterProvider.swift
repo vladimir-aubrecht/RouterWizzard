@@ -1,23 +1,13 @@
 //
-//  UbiquitiProvider.swift
+//  NoRouterProvider.swift
 //  GeoBypasser
 //
-//  Created by Vladimir Aubrecht on 30.05.2021.
+//  Created by Vladimir Aubrecht on 20.06.2021.
 //
 
-class UbiquitiProvider : RouterProvider {
-    private let sshClient : SshClient
-    private let ubiquitiClient : UbiquitiClient
-    
-    public init(hostname: String, username: String, password: String) {
-        self.sshClient = SshClient(hostname: hostname, username: username)
-        
-        try! self.sshClient.connect()
-        try! self.sshClient.authenticate(password: password)
-        
-        self.ubiquitiClient = UbiquitiClient(sshClient: sshClient)
-    }
-    
+import Foundation
+
+class EmptyRouterProvider : RouterProvider {
     public func fetchFirewallStatus(serviceName:String) -> RouterStatusModel {
         
         // Location is in description of firewall rule and status is based on status of firewall rule.

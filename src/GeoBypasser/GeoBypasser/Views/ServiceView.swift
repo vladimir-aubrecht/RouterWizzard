@@ -10,21 +10,17 @@ import SwiftUI
 
 struct ServiceView: View {
     @ObservedObject private var serviceModelView:ServiceModelView
+    private var editServiceModelView:EditServiceModelView
     
-    init(serviceModelView: ServiceModelView) {
+    init(serviceModelView: ServiceModelView, editServiceModelView: EditServiceModelView) {
         self.serviceModelView = serviceModelView
+        self.editServiceModelView = editServiceModelView
     }
     
     var body: some View {
         VStack {
             let services = self.serviceModelView.getServices()
-
-            let userDefaults = UserDefaults.standard
-            let hostname = userDefaults.string(forKey: "hostname_preference")
-            let username = userDefaults.string(forKey: "username_preference")
-            let password = userDefaults.string(forKey: "password_preference")
             
-            if (hostname != nil && username != nil && password != nil) {
                 if services.isEmpty {
                     Text("Loading...")
                 }
@@ -32,7 +28,7 @@ struct ServiceView: View {
                     NavigationView {
                         List {
                             ForEach(services, id: \.name) { service in
-                                NavigationLink(destination: EditServiceView(serviceModel: service, editServiceModelView: EditServiceModelView(hostname: hostname!, username: username!, password: password!))) {
+                                NavigationLink(destination: EditServiceView(serviceModel: service, editServiceModelView: self.editServiceModelView)) {
                                     HStack(alignment: .top) {
                                         Image(uiImage: service.image).resizable().aspectRatio(contentMode: .fit).scaledToFit().frame(maxWidth: 150, maxHeight: 150)
                                         VStack(alignment: .leading) {
@@ -43,11 +39,7 @@ struct ServiceView: View {
                                 }
                            }
                         }
-                    }
                 }
-            }
-            else {
-                GoToSettingsView()
             }
         }
     }
@@ -55,6 +47,6 @@ struct ServiceView: View {
 
 struct ServiceView_Previews: PreviewProvider {
     static var previews: some View {
-        ServiceView(serviceModelView: ServiceModelView(hostname: "", username: "", password: ""))
+        ServiceView(serviceModelView: ServiceModelView(routerProvider: EmptyRouterProvider()), editServiceModelView: EditServiceModelView(routerProvider: EmptyRouterProvider()))
     }
 }

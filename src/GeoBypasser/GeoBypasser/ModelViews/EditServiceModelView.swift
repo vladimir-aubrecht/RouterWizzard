@@ -8,10 +8,10 @@
 import Foundation
 
 class EditServiceModelView {
-    private var routerProvider : UbiquitiProvider
+    private var routerProvider : RouterProvider
     
-    public init(hostname: String, username: String, password: String) {
-        routerProvider = UbiquitiProvider(hostname: hostname, username: username, password: password)
+    public init(routerProvider: RouterProvider) {
+        self.routerProvider = routerProvider
     }
     
     public func Activate(serviceModel: ServiceModel) {
