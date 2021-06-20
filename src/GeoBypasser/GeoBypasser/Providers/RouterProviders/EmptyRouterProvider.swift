@@ -26,8 +26,8 @@ class EmptyRouterProvider : RouterProvider {
         return [InterfaceModel]()
     }
     
-    public func fetchVpnInterfaces() -> [VpnInterfaceModel] {
-        return [VpnInterfaceModel]()
+    public func fetchVpnInterfaces() -> [String: VpnInterfaceModel] {
+        return [String: VpnInterfaceModel]()
     }
     
     public func fetchTableIndexByInterface(interfaceName: String) -> Int {

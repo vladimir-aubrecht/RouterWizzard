@@ -24,11 +24,11 @@ class EditServiceModelView {
     }
     
     private func addDomainForwarding(serviceModel: ServiceModel) {
-        let vpnInterfaces = routerProvider.fetchVpnInterfaces().filter { $0.description == serviceModel.location }
+        let vpnInterfaces = routerProvider.fetchVpnInterfaces().filter { $0.value.description == serviceModel.location }
         
         if vpnInterfaces.count > 0 {
-            let vpnInterface = vpnInterfaces[0]
-            let connectionInfo = routerProvider.fetchVpnConnection(vpnInterface: vpnInterface.name)
+            let vpnInterface = vpnInterfaces.first!
+            let connectionInfo = routerProvider.fetchVpnConnection(vpnInterface: vpnInterface.key)
             
             routerProvider.deleteDnsIpSetForwarding(serviceName: serviceModel.name)
             routerProvider.deleteDnsServerForwarding(domains: serviceModel.domains, dnsServerIp: connectionInfo.dnsServerIp)
@@ -45,11 +45,11 @@ class EditServiceModelView {
     }
     
     private func redirectServiceThroughLocation(serviceModel: ServiceModel) {
-        let vpnInterfaces = routerProvider.fetchVpnInterfaces().filter { $0.description == serviceModel.location }
+        let vpnInterfaces = routerProvider.fetchVpnInterfaces().filter { $0.value.description == serviceModel.location }
         
         if vpnInterfaces.count > 0 {
-            let vpnInterface = vpnInterfaces[0]
-            let tableIndex = routerProvider.fetchTableIndexByInterface(interfaceName: vpnInterface.name)
+            let vpnInterface = vpnInterfaces.first!
+            let tableIndex = routerProvider.fetchTableIndexByInterface(interfaceName: vpnInterface.key)
             let ruleIndex = tableIndex * 10
             routerProvider.deleteFirewallRule(ruleIndex: ruleIndex)
             routerProvider.addFirewallAddressGroupRule(addressGroup: serviceModel.name, description: serviceModel.name, tableIndex: tableIndex, ruleIndex: ruleIndex)
@@ -68,7 +68,7 @@ class EditServiceModelView {
     
     private func setDnsRedirectsStaticRoutes() {
         routerProvider.fetchVpnInterfaces().forEach { vpnInterface in
-            let connectionInfo = routerProvider.fetchVpnConnection(vpnInterface: vpnInterface.name)
+            let connectionInfo = routerProvider.fetchVpnConnection(vpnInterface: vpnInterface.key)
             routerProvider.addStaticRoutingRecord(destinationIp: connectionInfo.dnsServerIp, gatewayIp: connectionInfo.gatewayIp)
         }
     }
@@ -80,10 +80,9 @@ class EditServiceModelView {
         routerProvider.deleteAllStaticRoutingRecords()
         routerProvider.addStaticDefaultGateway(tableIndex: 0, ip: defaultGateway)
         
-        if vpnInterfaces.count > 0 {
-            for i in 0...vpnInterfaces.count - 1 {
-                routerProvider.addStaticDefaultGatewayByInterface(tableIndex: i + 1, vpnInterfaceName: vpnInterfaces[i].name)
-            }
+        for (name, _) in vpnInterfaces {
+            let tableIndex = Int(name.replacingOccurrences(of: "vtun", with: ""))! + 1
+            routerProvider.addStaticDefaultGatewayByInterface(tableIndex: tableIndex, vpnInterfaceName: name)
         }
     }
 }

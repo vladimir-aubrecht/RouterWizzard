@@ -10,10 +10,12 @@ import Logging
 class UbiquitiProvider : RouterProvider {
     private let ubiquitiClient : UbiquitiClient
     private let logger : Logger
+    private let ubiquitiDeserializer : UbiquitiDeserializer
     
     public init(ubiquitiClient: UbiquitiClient, logger: Logger) {
         self.ubiquitiClient = ubiquitiClient
         self.logger = logger
+        self.ubiquitiDeserializer = UbiquitiDeserializer(logger: logger)
     }
     
     public func fetchFirewallStatus(serviceName:String) -> RouterStatusModel {
@@ -34,9 +36,14 @@ class UbiquitiProvider : RouterProvider {
         return [InterfaceModel]()
     }
     
-    public func fetchVpnInterfaces() -> [VpnInterfaceModel] {
+    public func fetchVpnInterfaces() -> [String: VpnInterfaceModel] {
         self.logger.info("FetchVpnInterfaces called.")
-        return [VpnInterfaceModel]()
+        let openVpnKey = try! ubiquitiClient.show(key: "interfaces openvpn")
+        self.logger.info("\(openVpnKey)")
+        
+        let output: [String: VpnInterfaceModel] = try! ubiquitiDeserializer.deserialize(content: openVpnKey)
+        
+        return output
     }
     
     public func fetchTableIndexByInterface(interfaceName: String) -> Int {

@@ -16,7 +16,7 @@ protocol RouterProvider {
     
     func fetchLocalInterfaces() -> [InterfaceModel]
     
-    func fetchVpnInterfaces() -> [VpnInterfaceModel]
+    func fetchVpnInterfaces() -> [String: VpnInterfaceModel]
     
     func fetchTableIndexByInterface(interfaceName: String) -> Int
     
