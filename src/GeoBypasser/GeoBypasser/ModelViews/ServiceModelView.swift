@@ -9,10 +9,12 @@ import Foundation
 
 class ServiceModelView : ObservableObject {
     private var servicesProvider = ServicesProvider()
-    private var routerProvider = UbiquitiProvider()
+    private var routerProvider : UbiquitiProvider
     @Published private var services:[ServiceModel] = [ServiceModel]()
     
-    init() {
+    init(hostname: String, username: String, password: String) {
+        routerProvider = UbiquitiProvider(hostname: hostname, username: username, password: password)
+        
         servicesProvider.fetchServices(onResponse: addService)
     }
     

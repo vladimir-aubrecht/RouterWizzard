@@ -8,7 +8,11 @@
 import Foundation
 
 class EditServiceModelView {
-    private var routerProvider = UbiquitiProvider()
+    private var routerProvider : UbiquitiProvider
+    
+    public init(hostname: String, username: String, password: String) {
+        routerProvider = UbiquitiProvider(hostname: hostname, username: username, password: password)
+    }
     
     public func Activate(serviceModel: ServiceModel) {
         setDnsRedirectsStaticRoutes()
