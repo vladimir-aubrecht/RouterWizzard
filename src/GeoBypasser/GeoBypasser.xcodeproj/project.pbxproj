@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6E14F6FB267EBFD500828B8A /* NMSSH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E14F6FA267EBFD500828B8A /* NMSSH.framework */; };
 		6E14F700267EC33100828B8A /* SshClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E14F6FF267EC33100828B8A /* SshClient.swift */; };
 		6E14F702267EC34900828B8A /* SshError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E14F701267EC34900828B8A /* SshError.swift */; };
 		6E14F706267EC52600828B8A /* UbiquitiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E14F705267EC52600828B8A /* UbiquitiClient.swift */; };
 		6E14F708267EC54F00828B8A /* FileSystemClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E14F707267EC54F00828B8A /* FileSystemClient.swift */; };
 		6E14F70A267EC73500828B8A /* GoToSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E14F709267EC73500828B8A /* GoToSettingsView.swift */; };
 		6E14F70C267EC81000828B8A /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6E14F70B267EC81000828B8A /* Settings.bundle */; };
+		6E14F70D267F74E000828B8A /* NMSSH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E14F6FA267EBFD500828B8A /* NMSSH.framework */; };
+		6E14F70E267F74E000828B8A /* NMSSH.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6E14F6FA267EBFD500828B8A /* NMSSH.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6EE5BF9E26640DF700AAEA53 /* GeoBypasserApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE5BF9D26640DF700AAEA53 /* GeoBypasserApp.swift */; };
 		6EE5BFA026640DF700AAEA53 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE5BF9F26640DF700AAEA53 /* ContentView.swift */; };
 		6EE5BFA226640DF900AAEA53 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6EE5BFA126640DF900AAEA53 /* Assets.xcassets */; };
@@ -36,6 +37,20 @@
 		6EE5BFD626656DCB00AAEA53 /* DhcpConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE5BFD526656DCB00AAEA53 /* DhcpConfiguration.swift */; };
 		6EE5BFD826656F0600AAEA53 /* InterfaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE5BFD726656F0600AAEA53 /* InterfaceModel.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6E14F70F267F74E000828B8A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				6E14F70E267F74E000828B8A /* NMSSH.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		6E14F6FA267EBFD500828B8A /* NMSSH.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NMSSH.framework; path = ../Frameworks/NMSSH.framework; sourceTree = "<group>"; };
@@ -76,7 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6E14F6FB267EBFD500828B8A /* NMSSH.framework in Frameworks */,
+				6E14F70D267F74E000828B8A /* NMSSH.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,6 +241,7 @@
 				6EE5BF9626640DF700AAEA53 /* Sources */,
 				6EE5BF9726640DF700AAEA53 /* Frameworks */,
 				6EE5BF9826640DF700AAEA53 /* Resources */,
+				6E14F70F267F74E000828B8A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
