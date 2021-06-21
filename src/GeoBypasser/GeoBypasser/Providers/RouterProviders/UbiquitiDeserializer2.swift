@@ -34,51 +34,42 @@ class UbiquitiDeserializer2
         let lines = content.split(separator: "\n", omittingEmptySubsequences: true)
         
         var outputJson = ""
-        var startIndex = 0
-        for line in lines {
+        var currentIndex = 0
+        while currentIndex <  lines.count {
+            let line = lines[currentIndex]
             let words = line.split(separator: " ", maxSplits: 3, omittingEmptySubsequences: true)
             
             if words[words.endIndex - 1] == "{" {
                 
-                let internalContent = lines[(startIndex+1)...lines.count - 1].joined(separator: "\n")
+                let internalContent = lines[(currentIndex+1)...lines.count - 1].joined(separator: "\n")
                 let (internalOutput, newIndex) = self.convertToJson(content: internalContent)
-                startIndex = newIndex + 2
+                currentIndex += newIndex
                 
                 outputJson += "\"\(words[0])\": "
                 
                 if words.count == 2 {
                     outputJson += "{\(internalOutput)}"
                     
-                    if startIndex < lines.count - 1 && lines[startIndex + 2].trimmingCharacters(in: .whitespacesAndNewlines) != "}" {
+                    if currentIndex < lines.count - 1 && lines[currentIndex + 2].trimmingCharacters(in: .whitespacesAndNewlines) != "}" {
                         outputJson += ","
                     }
                 }
                 else if words.count == 3 && words[words.endIndex - 1] == "{" {
                     outputJson += "[{\"\(words[1])\": {\(internalOutput)}}"
-                    
-                    /*let word0 = String(words[0])
-                    let word1 = String(words[1])
-                    let line0 = String(lines[0])
-                    let line1 = String(lines[1])
-                    let line2 = String(lines[2])
-                    let line3 = String(lines[3])
-                    let line4 = String(lines[4])
-                    let line5 = String(lines[5])*/
-                    
-                    
-                    if startIndex < lines.count - 1 && lines[startIndex].trimmingCharacters(in: .whitespacesAndNewlines) != "}" {
+                                        
+                    if currentIndex < lines.count - 1 && lines[currentIndex + 1].trimmingCharacters(in: .whitespacesAndNewlines) != "}" {
                         outputJson += ","
                     }
 
-                    while startIndex < lines.count - 1 && lines[startIndex].trimmingCharacters(in: .whitespacesAndNewlines).starts(with: words[0]) {
-                        let newWords = lines[startIndex].split(separator: " ", maxSplits: 3, omittingEmptySubsequences: true)
-                        let internalContent = lines[(startIndex+1)...lines.count - 1].joined(separator: "\n")
+                    while currentIndex < lines.count - 1 && lines[currentIndex+1].trimmingCharacters(in: .whitespacesAndNewlines).starts(with: words[0]) {
+                        let newWords = lines[currentIndex+1].split(separator: " ", maxSplits: 3, omittingEmptySubsequences: true)
+                        let internalContent = lines[(currentIndex+2)...lines.count - 1].joined(separator: "\n")
                         let (internalOutput, newIndex) = self.convertToJson(content: internalContent)
-                        startIndex += newIndex + 2
+                        currentIndex += newIndex
 
                         outputJson += "{\"\(newWords[1])\": {\(internalOutput)}}"
                         
-                        if startIndex < lines.count - 1 && lines[startIndex].trimmingCharacters(in: .whitespacesAndNewlines) != "}" {
+                        if currentIndex < lines.count - 1 && lines[currentIndex + 2].trimmingCharacters(in: .whitespacesAndNewlines) != "}" {
                             outputJson += ","
                         }
                     }
@@ -87,7 +78,8 @@ class UbiquitiDeserializer2
                 }
             }
             else if words[0] == "}" {
-                return (outputJson, startIndex)
+                currentIndex += 1
+                return (outputJson, currentIndex)
             }
             else {
                 
@@ -99,15 +91,15 @@ class UbiquitiDeserializer2
                     outputJson += "\"\(words[0])\": true"
                 }
                 
-                if startIndex < lines.count - 1 && lines[startIndex + 2].trimmingCharacters(in: .whitespacesAndNewlines) != "}" {
+                if currentIndex < lines.count - 1 && lines[currentIndex + 1].trimmingCharacters(in: .whitespacesAndNewlines) != "}" {
                     outputJson += ","
                 }
             }
 
-            startIndex += 1
+            currentIndex += 1
         }
         
-        return (outputJson, startIndex)
+        return (outputJson, currentIndex)
     }
     
     /*
