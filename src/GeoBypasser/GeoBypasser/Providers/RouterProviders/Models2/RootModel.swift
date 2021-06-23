@@ -4,9 +4,8 @@
 //
 //  Created by Vladimir Aubrecht on 20.06.2021.
 //
-
-import Foundation
-
-class RootModel : Decodable {
-    
+struct RootModel : Decodable {
+    public var firewall: FirewallModel
+    //public var interfaces: String
+    //public var portforward: String
 }

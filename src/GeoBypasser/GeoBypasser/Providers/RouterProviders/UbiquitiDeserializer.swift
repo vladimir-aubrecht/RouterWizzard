@@ -17,74 +17,94 @@ class UbiquitiDeserializer
         self.logger = logger
     }
     
-    func deserialize<T: Decodable>(content: String) throws -> [String: T] {
+    func deserialize<T: Decodable>(content: String) throws -> T {
         
-        let jsonData = self.convertToJson(content: content).data(using: .utf8)!
+        let jsonDataRaw = self.convertToJson(content: content)
+        let jsonData = jsonDataRaw.data(using: .utf8)!
         let jsonString = String(decoding: jsonData, as: UTF8.self)
         self.logger.info("\(jsonString)")
         
         let decoder = JSONDecoder()
-        return try! decoder.decode([String: T].self, from: jsonData)
+        return try! decoder.decode(T.self, from: jsonData)
     }
     
     private func convertToJson(content: String) -> String {
+        let (jsonDataRaw, _) = convertToJsonInternal(content: content)
+        return "{\(jsonDataRaw.replacingOccurrences(of: "\"\"", with: "\""))}"
+    }
+    
+    private func convertToJsonInternal(content: String) -> (String, Int) {
         let lines = content.split(separator: "\n", omittingEmptySubsequences: true)
         
-        var outputJson: String = "{"
-        var openedNodes = 0
-        for j in 0...lines.count - 1 {
-            let trimmedLine = lines[j].trimmingCharacters(in: .whitespacesAndNewlines)
-            let isNextLineCloseNodeLine = j+1 >= lines.count ? true : lines[j+1].trimmingCharacters(in: .whitespacesAndNewlines) == "}"
+        var outputJson = ""
+        var currentIndex = 0
+        while currentIndex <  lines.count {
+            let line = lines[currentIndex]
+            let words = line.split(separator: " ", maxSplits: 3, omittingEmptySubsequences: true)
             
-            if (trimmedLine == "}") {
-                for _ in 0...openedNodes {
-                    outputJson += "}"
-                }
-                openedNodes = 0
+            if words[words.endIndex - 1] == "{" {
+                let internalContent = lines[(currentIndex+1)...lines.count - 1].joined(separator: "\n")
+                let (internalOutput, newIndex) = self.convertToJsonInternal(content: internalContent)
+
+                currentIndex += newIndex
+                outputJson += "\"\(words[0])\": "
                 
-                if j < lines.count - 1 && lines[j + 1].trimmingCharacters(in: .whitespacesAndNewlines) != "}"{
-                    outputJson += ","
+                if words.count == 2 {
+                    outputJson += "{\(internalOutput)}"
+                    
+                    if currentIndex < lines.count - 1 && lines[currentIndex + 1].trimmingCharacters(in: .whitespacesAndNewlines) != "}" {
+                        outputJson += ","
+                    }
                 }
-                
-                continue
-            }
-            
-            var words = trimmedLine.split(separator: " ", omittingEmptySubsequences: true)
-            let isNode = words[words.count - 1] == "{"
-            
-            if (isNode) {
-                words = words.dropFirst().dropLast()
-                openedNodes = words.count - 1
-            }
-            
-            var i = 0
-            while (i < words.count) {
-                if (isNode) {
-                    outputJson += "\"" + words[i] + "\": {"
-                    i += 1
-                }
-                else
-                {
-                    if i + 1 < words.count {
-                        let key = words[i].replacingOccurrences(of: "-", with: "")
-                        let value = words[i + 1]
-                        outputJson += "\"" + key + "\": \"" + value + "\""
+                else if words.count == 3 && words[words.endIndex - 1] == "{" {
+                    outputJson += "[{\"\(words[1])\": {\(internalOutput)}}"
+                                        
+                    if currentIndex < lines.count - 1 && lines[currentIndex + 1].trimmingCharacters(in: .whitespacesAndNewlines).starts(with: words[0]) {
+                        outputJson += ","
+                    }
+
+                    while currentIndex < lines.count - 1 && lines[currentIndex+1].trimmingCharacters(in: .whitespacesAndNewlines).starts(with: words[0]) {
+                        let newWords = lines[currentIndex+1].split(separator: " ", maxSplits: 3, omittingEmptySubsequences: true)
+                        let internalContent = lines[(currentIndex+2)...lines.count - 1].joined(separator: "\n")
+                        let (internalOutput, newIndex) = self.convertToJsonInternal(content: internalContent)
+                        currentIndex += newIndex + 1
+
+                        outputJson += "{\"\(newWords[1])\": {\(internalOutput)}}"
                         
-                        if !isNextLineCloseNodeLine {
+                        if currentIndex < lines.count - 1 && lines[currentIndex + 1].trimmingCharacters(in: .whitespacesAndNewlines).starts(with: words[0]) {
                             outputJson += ","
                         }
-                        
-                        i += 2
                     }
-                    else {
-                        outputJson += "\"" + words[i] + "\": true"
-                        i += 1
+                    
+                    outputJson += "]"
+                    
+                    if currentIndex < lines.count - 1 && lines[currentIndex + 1].trimmingCharacters(in: .whitespacesAndNewlines) != "}" {
+                        outputJson += ","
                     }
                 }
             }
+            else if words[0] == "}" {
+                currentIndex += 1
+                return (outputJson, currentIndex)
+            }
+            else {
+                
+                if words.count > 1 {
+                    let value = words[1...words.count - 1].joined(separator: " ")
+                    outputJson += "\"\(words[0])\": \"\(value)\""
+                }
+                else {
+                    outputJson += "\"\(words[0])\": true"
+                }
+                
+                if currentIndex < lines.count - 1 && lines[currentIndex + 1].trimmingCharacters(in: .whitespacesAndNewlines) != "}" {
+                    outputJson += ","
+                }
+            }
+
+            currentIndex += 1
         }
         
-        outputJson += "}"
-        return outputJson
+        return (outputJson, currentIndex)
     }
 }

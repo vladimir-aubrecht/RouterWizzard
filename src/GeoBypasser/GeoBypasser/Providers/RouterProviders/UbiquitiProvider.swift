@@ -10,12 +10,12 @@ import Logging
 class UbiquitiProvider : RouterProvider {
     private let ubiquitiClient : UbiquitiClient
     private let logger : Logger
-    private let ubiquitiDeserializer : UbiquitiDeserializer2
+    private let ubiquitiDeserializer : UbiquitiDeserializer
     
     public init(ubiquitiClient: UbiquitiClient, logger: Logger) {
         self.ubiquitiClient = ubiquitiClient
         self.logger = logger
-        self.ubiquitiDeserializer = UbiquitiDeserializer2(logger: logger)
+        self.ubiquitiDeserializer = UbiquitiDeserializer(logger: logger)
     }
     
     public func fetchFirewallStatus(serviceName:String) -> RouterStatusModel {
@@ -37,7 +37,7 @@ class UbiquitiProvider : RouterProvider {
         let result = try! ubiquitiClient.show(key: "interfaces ethernet")
         self.logger.info("\(result)")
         
-        let output: [String: InterfaceModel] = try! ubiquitiDeserializer.deserialize(content: result)
+        let output = [String: InterfaceModel]() // = try! ubiquitiDeserializer.deserialize(content: result)
         
         return output
     }
@@ -48,7 +48,7 @@ class UbiquitiProvider : RouterProvider {
         let result = try! ubiquitiClient.show(key: "interfaces openvpn")
         self.logger.info("\(result)")
         
-        let output: [String: InterfacesOpenVpnModel] = try! ubiquitiDeserializer.deserialize(content: result)
+        let output = [String: InterfacesOpenVpnModel]() // = try! ubiquitiDeserializer.deserialize(content: result)
         
         return output
     }
