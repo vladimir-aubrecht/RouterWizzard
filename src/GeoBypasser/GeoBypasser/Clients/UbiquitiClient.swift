@@ -8,7 +8,7 @@
 
 import Foundation
 
-class UbiquitiClient {
+class UbiquitiClient : UbiquitiClientProtocol {
     private let sshClient: SshClient
     
     init(sshClient: SshClient) {

@@ -33,9 +33,17 @@ struct ContentView: View {
         logger.info("Logging to: \(settingsModel.hostname!) by username: \(settingsModel.username!) with password: \(settingsModel.password!)")
         
         let sshClient = SshClient(hostname: settingsModel.hostname!, username: settingsModel.username!)
-        try sshClient.connect()
-        try sshClient.authenticate(password: settingsModel.password!)
-        let ubiquitiClient = UbiquitiClient(sshClient: sshClient)
+        
+        try? sshClient.connect()
+        try? sshClient.authenticate(password: settingsModel.password!)
+        
+        let ubiquitiClient : UbiquitiClientProtocol
+        if sshClient.isConnected {
+            ubiquitiClient = UbiquitiClient(sshClient: sshClient)
+        }
+        else {
+            ubiquitiClient = UbiquitiClientMock()
+        }
         
         return UbiquitiProvider(ubiquitiClient: ubiquitiClient, logger: logger)
     }

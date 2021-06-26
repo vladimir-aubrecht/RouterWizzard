@@ -8,11 +8,11 @@
 import Logging
 
 class UbiquitiProvider : RouterProvider {
-    private let ubiquitiClient : UbiquitiClient
+    private let ubiquitiClient : UbiquitiClientProtocol
     private let logger : Logger
     private let ubiquitiDeserializer : UbiquitiDeserializer
     
-    public init(ubiquitiClient: UbiquitiClient, logger: Logger) {
+    public init(ubiquitiClient: UbiquitiClientProtocol, logger: Logger) {
         self.ubiquitiClient = ubiquitiClient
         self.logger = logger
         self.ubiquitiDeserializer = UbiquitiDeserializer(logger: logger)
