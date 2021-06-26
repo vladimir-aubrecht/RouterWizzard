@@ -57,7 +57,7 @@ class UbiquitiDeserializer
                     }
                 }
                 else if words.count == 3 && words[words.endIndex - 1] == "{" {
-                    outputJson += "[{\"\(words[1])\": {\(internalOutput)}}"
+                    outputJson += "{\"\(words[1])\": {\(internalOutput)}"
                                         
                     if currentIndex < lines.count - 1 && lines[currentIndex + 1].trimmingCharacters(in: .whitespacesAndNewlines).starts(with: words[0]) {
                         outputJson += ","
@@ -69,14 +69,14 @@ class UbiquitiDeserializer
                         let (internalOutput, newIndex) = self.convertToJsonInternal(content: internalContent)
                         currentIndex += newIndex + 1
 
-                        outputJson += "{\"\(newWords[1])\": {\(internalOutput)}}"
+                        outputJson += "\"\(newWords[1])\": {\(internalOutput)}"
                         
                         if currentIndex < lines.count - 1 && lines[currentIndex + 1].trimmingCharacters(in: .whitespacesAndNewlines).starts(with: words[0]) {
                             outputJson += ","
                         }
                     }
                     
-                    outputJson += "]"
+                    outputJson += "}"
                     
                     if currentIndex < lines.count - 1 && lines[currentIndex + 1].trimmingCharacters(in: .whitespacesAndNewlines) != "}" {
                         outputJson += ","

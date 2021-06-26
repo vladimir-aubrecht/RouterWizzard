@@ -26,6 +26,8 @@
 		6E2151AD2683E0940009B725 /* IpV6NameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2151AC2683E0940009B725 /* IpV6NameModel.swift */; };
 		6E2151B42687D28B0009B725 /* UbiquitiClientMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2151B32687D28B0009B725 /* UbiquitiClientMock.swift */; };
 		6E2151B72687D2B50009B725 /* UbiquitiClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2151B62687D2B50009B725 /* UbiquitiClientProtocol.swift */; };
+		6E2151B92687E0430009B725 /* AddressGroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2151B82687E0430009B725 /* AddressGroupModel.swift */; };
+		6E2151BB2687E5190009B725 /* RuleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2151BA2687E5190009B725 /* RuleModel.swift */; };
 		6EE5BF9E26640DF700AAEA53 /* GeoBypasserApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE5BF9D26640DF700AAEA53 /* GeoBypasserApp.swift */; };
 		6EE5BFA026640DF700AAEA53 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE5BF9F26640DF700AAEA53 /* ContentView.swift */; };
 		6EE5BFA226640DF900AAEA53 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6EE5BFA126640DF900AAEA53 /* Assets.xcassets */; };
@@ -82,6 +84,8 @@
 		6E2151AC2683E0940009B725 /* IpV6NameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IpV6NameModel.swift; sourceTree = "<group>"; };
 		6E2151B32687D28B0009B725 /* UbiquitiClientMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UbiquitiClientMock.swift; sourceTree = "<group>"; };
 		6E2151B62687D2B50009B725 /* UbiquitiClientProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UbiquitiClientProtocol.swift; sourceTree = "<group>"; };
+		6E2151B82687E0430009B725 /* AddressGroupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressGroupModel.swift; sourceTree = "<group>"; };
+		6E2151BA2687E5190009B725 /* RuleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleModel.swift; sourceTree = "<group>"; };
 		6EE5BF9A26640DF700AAEA53 /* GeoBypasser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoBypasser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EE5BF9D26640DF700AAEA53 /* GeoBypasserApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoBypasserApp.swift; sourceTree = "<group>"; };
 		6EE5BF9F26640DF700AAEA53 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -178,6 +182,8 @@
 				6E2151A82683DFBB0009B725 /* FirewallModel.swift */,
 				6E2151AA2683E06A0009B725 /* GroupModel.swift */,
 				6E2151AC2683E0940009B725 /* IpV6NameModel.swift */,
+				6E2151B82687E0430009B725 /* AddressGroupModel.swift */,
+				6E2151BA2687E5190009B725 /* RuleModel.swift */,
 			);
 			path = Firewall;
 			sourceTree = "<group>";
@@ -371,7 +377,9 @@
 				6EE5BFC826642C5600AAEA53 /* EditServiceView.swift in Sources */,
 				6E2151AD2683E0940009B725 /* IpV6NameModel.swift in Sources */,
 				6E2151A92683DFBB0009B725 /* FirewallModel.swift in Sources */,
+				6E2151BB2687E5190009B725 /* RuleModel.swift in Sources */,
 				6E2151B42687D28B0009B725 /* UbiquitiClientMock.swift in Sources */,
+				6E2151B92687E0430009B725 /* AddressGroupModel.swift in Sources */,
 				6EE5BFCE2664319800AAEA53 /* InterfacesOpenVpnModel.swift in Sources */,
 				6E14F716267F7B1F00828B8A /* RouterProviderProtocol.swift in Sources */,
 				6E2151B72687D2B50009B725 /* UbiquitiClientProtocol.swift in Sources */,
