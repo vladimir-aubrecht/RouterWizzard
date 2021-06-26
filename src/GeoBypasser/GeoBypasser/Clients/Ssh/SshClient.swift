@@ -28,7 +28,7 @@ class SshClient {
     }
     
     public func connect() throws {
-        self.session.connect()
+        self.session.connect(withTimeout: 2)
         
         if (!self.isConnected) {
             throw SshError.cannotConnect("Cannot connect to: \(self.hostname)")
