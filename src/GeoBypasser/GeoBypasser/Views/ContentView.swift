@@ -15,18 +15,13 @@ struct ContentView: View {
     var body: some View {
         TabView {
             if (settingsModel.isSet) {
-                let routerProvider = try? self.createRouterProvider()
+                let routerProvider = (try? self.createRouterProvider()) ?? EmptyRouterProvider()
                 
-                if routerProvider != nil {
-                    ServiceView(serviceModelView: ServiceModelView(routerProvider: routerProvider!), editServiceModelView: EditServiceModelView(routerProvider: routerProvider!))
-                        .tabItem {
-                            Image(systemName: "house.fill")
-                            Text("Services")
-                        }
-                }
-                else {
-                    GoToSettingsView()
-                }
+                ServiceView(serviceModelView: ServiceModelView(routerProvider: routerProvider), editServiceModelView: EditServiceModelView(routerProvider: routerProvider))
+                    .tabItem {
+                        Image(systemName: "house.fill")
+                        Text("Services")
+                    }
             }
             else {
                 GoToSettingsView()
